@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 9 - undefined , null , NaN</h1>
+    </div>
+
+    <script>
+      // null - undefined - NaN
+      // ----------------------------------------------------------------------
+      console.log("----- null - undefined - NaN");
+      console.log("");
+      // undefined (valor vacio) significa que la variable a sido creada pero no ha sido inicializada por el porgramador
+      let indefinida;
+      console.log("Indefinida: ", indefinida);
+      // null (valor vacio) significa que la variable a sido inicializada intencionalmente nula por el programador
+      let nula = null;
+      console.log("nula: ", nula);
+      // NaN resultado de una operación numerica que no arroja un número
+      let noEsUnNumero = "Hola" * 8;
+      console.log(`"Hola" * 8: `, noEsUnNumero);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 29 - Operador de cortocircuito</h1>
+    </div>
+
+    <script>
+      // Operador de cortocircuito
+      // ----------------------------------------------------------------------
+      console.log("----- Operador de cortocircuito");
+      console.log("");
+
+      console.log("*-* Cortocircuito con OR");
+      // Cuando el valor de la izquierda pueda validar a true es el valor que se cargará por defecto.
+      function saludar(nombre) {
+        // Así se usaba antes de que se pudiera agregar valores por defecto a las funciones.
+        nombre = nombre || "Desconcido";
+        console.log(`Hola ${nombre}`);
+      }
+      saludar("alex");
+      saludar();
+      console.log("*-* Otros ejemplos de OR");
+      console.log(`"Cadena" || "Otro valor" ->`, "Cadena" || "Otro valor");
+      console.log(`19 || "Otro valor" ->`, 19 || "Otro valor");
+      console.log(`true || "Otro valor" ->`, true || "Otro valor");
+      console.log(`[] || "Otro valor" ->`, [] || "Otro valor");
+      console.log(`{} || "Otro valor" ->`, {} || "Otro valor");
+      console.log(`false || "Otro valor" ->`, false || "Otro valor");
+      console.log(`null || "Otro valor" ->`, null || "Otro valor");
+      console.log(`undefined || "Otro valor" ->`, undefined || "Otro valor");
+      console.log(`"" || "Otro valor" ->`, "" || "Otro valor");
+      console.log(`0 || "Otro valor" ->`, 0 || "Otro valor");
+      console.log("");
+
+      console.log("*-* Cortocircuito con AND");
+      // Cuando el valor de la izquierda en la exprecion siempre pueda validar a falso se cargara por defecto
+      console.log(`"Cadena" && "Otro valor" ->`, "Cadena" && "Otro valor");
+      console.log(`19 && "Otro valor" ->`, 19 && "Otro valor");
+      console.log(`true && "Otro valor" ->`, true && "Otro valor");
+      console.log(`[] && "Otro valor" ->`, [] && "Otro valor");
+      console.log(`{} && "Otro valor" ->`, {} && "Otro valor");
+      console.log(`false && "Otro valor" ->`, false && "Otro valor");
+      console.log(`null && "Otro valor" ->`, null && "Otro valor");
+      console.log(`undefined && "Otro valor" ->`, undefined && "Otro valor");
+      console.log(`"" && "Otro valor" ->`, "" && "Otro valor");
+      console.log(`0 && "Otro valor" ->`, 0 && "Otro valor");
+    </script>
+  </body>
+</html>

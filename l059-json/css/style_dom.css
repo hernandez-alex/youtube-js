@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.divtitulo {
+  background-color: rgb(10, 60, 120);
+  width: 100%;
+}
+
+.titulotexto {
+  display: inline-block;
+  margin: 0 2rem;
+  font-size: 30px;
+  color: #ffb347;
+  padding: 0.25rem 1rem;
+  text-align: center;
+}
+
+/* Hasta aqui llega mi estilo personal para los encabezados */

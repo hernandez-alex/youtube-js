@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 44 - Asincronía en JavaScript</h1>
+      <h2>Temporizadores : setTimeout - setInterval</h2>
+    </div>
+
+    <script>
+      console.log("----- Temporizadores: setTimeOut - setInterval");
+      console.log("//////////////////////////////////////////////////////////////////////");
+
+      // setTimeout
+      console.log("*-* setTimeout : descomenta el código para ver su funcionamiento");
+      console.log("Inicio");
+      const varSetTimeout = setTimeout(() => {
+        console.log("Ejecutando un setTimeout, esto se ejecuta una sola vez.");
+      }, 1000);
+      console.log("Linea de código despues del setTimeout");
+
+      // setInterval
+      console.log("*-* setInterval : descomenta el código para ver su funcionamiento");
+      const varSetInterval = setInterval(() => {
+        console.log(
+          `Ejecutando un setInterval, se ejecuta cada vez que se cumple el intervalo. ${new Date().getSeconds()}`
+        );
+      }, 2000);
+      console.log("Linea de código despues del setInterval");
+
+      // clearTimeout: el setTimeout debe estar almacenado en una variable para detenerlo.
+      clearTimeout(varSetTimeout);
+
+      // clearInterval: el seInterval debe estar alamacenado en una variable para detenerlo.
+      clearInterval(varSetInterval);
+
+      // Ejemplo convinado de setTimeout y setInterval
+      console.log("*-* setTimeout y setInterval (ejemplo combinado)");
+      const tempTimeout = setTimeout(() => {
+        console.log(
+          "He cancelado el setInterval despues de transcurridos 6 segundos, solo se mostraron cinco horas locales."
+        );
+        clearInterval(tempInterval);
+      }, 6000);
+      const tempInterval = setInterval(() => {
+        console.log(new Date().toLocaleTimeString());
+      }, 1000);
+
+      //
+    </script>
+  </body>
+</html>

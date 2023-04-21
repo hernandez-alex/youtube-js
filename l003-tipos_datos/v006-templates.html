@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 6 - Template strings</h1>
+    </div>
+
+    <script>
+      // Concatenación de variables simple
+      // ----------------------------------------------------------------------
+      console.log("----- Templates strings");
+      console.log("");
+      console.log("Concatenación simple y antigua de cadenas y variables");
+      let miNombre = "Alex";
+      let miApellido = "Hernández";
+      let saludoConcatenadoUno = "Hola mi nombre es " + miNombre + " " + miApellido;
+      console.log(saludoConcatenadoUno);
+
+      // Interpolación de variables
+      // ----------------------------------------------------------------------
+      // Template Strings
+      console.log("");
+      console.log("Interpolación de variables (Template Strings)");
+      let saludoTemplateString = `Hola mi nombre es ${miNombre} ${miApellido}`;
+      console.log(saludoTemplateString);
+      console.log("----- Aplicando console.log con destructuring");
+      let a1 = 11;
+      let a2 = 22;
+      console.log({ a1, a2 });
+    </script>
+  </body>
+</html>

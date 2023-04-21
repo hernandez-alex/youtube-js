@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 22 - Prototipos</h1>
+    </div>
+
+    <script>
+      // Prototipos
+      // ----------------------------------------------------------------------
+      // Programación orientada a objetos - POO
+      /*
+      POO
+        Clases: Modelos a seguir
+          Objetos: Instancias de las clases
+            Atributos: Variables -Son las caracteristicas o propiedades del objeto
+            Metodos: Funciones - Son las funciones dentro de un objeto
+      */
+      console.log("----- Programación orientada a objetos: Prototipos");
+      console.log("");
+      console.log("*-* Objetos sin usar constructores o clases (mala práctica)");
+      const animal = {
+        nombre: "Snoopy",
+        sonido() {
+          console.log("Hago sonidods porque estoy vivo");
+        },
+      };
+      console.log(animal);
+
+      const animal2 = {
+        nombre: "Lola Bunny",
+        sonido() {
+          console.log("Hago sonido porque estoy vivo");
+        },
+      };
+      console.log(animal2);
+
+      console.log("");
+      console.log("*-* Constructores");
+      // Ejemplo de funcion constructura con metodos agragados a la función (mala practica, porque genera metodos duplicados en cada instancia del objeto...)
+
+      // function Animal(nombre, genero) {
+      //   // Atributos
+      //   this.nombre = nombre;
+      //   this.genero = genero;
+      //   // Metodos
+      //   this.saludar = function () {
+      //     console.log(`Hola me llamo ${this.nombre}`);
+      //   };
+      //   this.sonar = function () {
+      //     console.log("Hago sonidos porque estoy vivo");
+      //   };
+      // }
+
+      // Ejemplo de función constructora donde los metodos se colocan externamente y se asignan al prototipo de la función constructora esto evita los duplicados en las instancias de los objetos creados y mejora el rendimiento de nuestra aplicación...
+      function Animal(nombre, genero) {
+        // Atributos
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+      // Metodos asignados al prototipo
+      Animal.prototype.saludar = function () {
+        console.log(`Hola me llamo ${this.nombre}`);
+      };
+      Animal.prototype.sonar = function () {
+        console.log("Hago sonidos porque estoy vivo");
+      };
+
+      // Instancia Snoopy
+      const snoopy = new Animal("Snoopy", "masculino");
+      console.log(snoopy);
+      console.log(snoopy.nombre, snoopy.genero);
+      snoopy.saludar();
+      snoopy.sonar();
+
+      // Instancia LolaBunny
+      const lolaBunny = new Animal("Lola Bunny", "femenino");
+      console.log(lolaBunny);
+      console.log(lolaBunny.nombre, lolaBunny.genero);
+      lolaBunny.saludar();
+      lolaBunny.sonar();
+    </script>
+  </body>
+</html>

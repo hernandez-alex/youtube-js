@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 16 - Manejo de Errores</h1>
+    </div>
+
+    <script>
+      // Manejo de errores (loops)
+      // ----------------------------------------------------------------------
+      console.log("----- Manejo de errores");
+      console.log("");
+
+      console.log("*-* try catch finally - Ejemplo 1");
+      try {
+        console.log("En el try se agrega el código a evaluar");
+        noExiste;
+        console.log("Segundo mensaje del try");
+      } catch (error) {
+        console.log("Catch, captura cualquier error surgido o lanzado en el try");
+        console.log(error);
+      } finally {
+        console.log("Finally, se ejecutará siempre al final pase lo  que pase...");
+      }
+
+      console.log("");
+      console.log("*-* try catch finally - Ejemplo 2");
+      try {
+        let numeroTry = "W";
+        console.log(
+          `Ya declare mi variable numeroTry = ${numeroTry}. Ahora toca evaluar si es un número se ejecuta la operación y si no lo es capturarlo en el catch para luego lanzar un mensaje personalizado...`
+        );
+        if (isNaN(numeroTry)) {
+          throw new Error("El valor introducido no es un número...");
+        }
+        console.log("Número al cuadrado:", numeroTry ** 2);
+      } catch (error) {
+        console.error(`Ha ocurrido un problema, ${error}`);
+      }
+    </script>
+  </body>
+</html>

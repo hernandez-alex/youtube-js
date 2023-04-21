@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 41 - Ejercicios de Lógica de Programación 8/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 21: Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].`
+      );
+
+      // Mi solución **********************************************************
+      const arrNumCuadrado = (arrNum = undefined) => {
+        let arrNum2 = [];
+
+        if (arrNum === undefined) return console.warn("Ha omitido el array númerico");
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parámetro "${arrNum}" no es un Array`);
+        if (arrNum.length === 0) return console.warn(`El array esta vacio`);
+
+        for (const item of arrNum) {
+          if (typeof item === "number") {
+            arrNum2.push(item ** 2);
+          } else {
+            return console.error(`El array solo puede contener valores numéricos.`);
+          }
+        }
+        return console.info(`[${arrNum}] al cuadrado = [${arrNum2}]`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con mi código");
+      arrNumCuadrado();
+      arrNumCuadrado("Alex");
+      arrNumCuadrado([]);
+      arrNumCuadrado([1, 4, 5]);
+      arrNumCuadrado(["a", 1, 2, 3]);
+      console.log();
+
+      // Otra solución ********************************************************
+      const arrNumCuadrado2 = (arrNum = undefined) => {
+        if (arrNum === undefined) return console.warn("Ha omitido el array númerico");
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parámetro "${arrNum}" no es un Array`);
+        if (arrNum.length === 0) return console.warn(`El array esta vacio`);
+        for (const num of arrNum) {
+          if (typeof num !== "number") return console.error(`El item "${num}" no es un número`);
+        }
+        return console.info(`${arrNum} al cuadrado = ${arrNum.map((x) => x ** 2)}`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con otro código");
+      arrNumCuadrado();
+      arrNumCuadrado("Alex");
+      arrNumCuadrado([]);
+      arrNumCuadrado([1, 4, 5]);
+      arrNumCuadrado(["a", 1, 2, 3]);
+      console.log();
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 22: Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].`
+      );
+
+      // Mi solución **********************************************************
+      const arrAltoBajo = (arrNum = "") => {
+        if (!arrNum) return console.warn(`Ha omitido el Array numérico`);
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parárametro "${arrNum}" no es un array`);
+        let numMenor = arrNum[0];
+        let numMayor = arrNum[0];
+        for (const item of arrNum) {
+          if (typeof item !== "number") {
+            return console.error(`El array solo puede contener valores numéricos`);
+          }
+          if (numMenor > item) numMenor = item;
+          if (numMayor < item) numMayor = item;
+        }
+        console.info(`[${arrNum}] = [${numMenor}, ${numMayor}]`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con mi código");
+      arrAltoBajo();
+      arrAltoBajo("Alex");
+      arrAltoBajo([1, 2, "3", 7]);
+      arrAltoBajo([1, 4, 5, 99, -60]);
+      console.log();
+
+      // Otra solución ********************************************************
+      const arrAltoBajo2 = (arrNum = undefined) => {
+        if (typeof arrNum === undefined) return console.warn(`Ha omitido el Array numérico`);
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parárametro "${arrNum}" no es un array`);
+        for (const num of arrNum) {
+          if (typeof num !== "number") return console.error(`El item "${num}" no es un número`);
+        }
+        console.info(`[${arrNum}] = [${Math.min(...arrNum)}, ${Math.max(...arrNum)}]`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con mi código");
+      arrAltoBajo2();
+      arrAltoBajo2("Alex");
+      arrAltoBajo2([1, 2, "3", 7]);
+      arrAltoBajo2([1, 4, 5, 99, -60]);
+      console.log();
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 23: Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.`
+      );
+
+      // Mi solución **********************************************************
+      const arrParImpar = (arrNum = "") => {
+        if (!arrNum) return console.warn(`Ha omitido el array numérico`);
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parámetro "${arrNum}" no es un array`);
+        let pares = [];
+        let impares = [];
+        for (const item of arrNum) {
+          if (typeof item !== "number" || item % 1 !== 0)
+            return console.error(`El array solo puede contener valores numéricos enteros`);
+
+          item % 2 === 0 ? pares.push(item) : impares.push(item);
+        }
+        const parImpar = {
+          pares,
+          impares,
+        };
+        return console.info(parImpar);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con mi código");
+      arrParImpar();
+      arrParImpar("Alex");
+      arrParImpar([2.3]);
+      arrParImpar([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+
+      // Otra solución ********************************************************
+      const arrParImpar2 = (arrNum = undefined) => {
+        if (arrNum === undefined) return console.warn(`Ha omitido el array numérico`);
+        if (!(arrNum instanceof Array))
+          return console.warn(`El parámetro ${arrNum}  no es un array`);
+        for (const num of arrNum) {
+          if (typeof num !== "number" || num % 1 !== 0)
+            return console.warn(`El item ${num} no es un número entero`);
+        }
+
+        console.info({
+          arrNum,
+          pares: arrNum.filter((x) => x % 2 === 0),
+          impares: arrNum.filter((x) => x % 2 !== 0),
+        });
+      };
+
+      // --- Pruebas del ejercicio
+      console.log();
+      console.log("/// Pruebas con otro código");
+      arrParImpar2();
+      arrParImpar2("Alex");
+      arrParImpar2([2.3]);
+      arrParImpar2([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+    </script>
+  </body>
+</html>

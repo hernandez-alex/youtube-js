@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+    <style>
+      ul {
+        font-size: 24px;
+        padding: 0 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 60: Web APIs</h1>
+      <!-- <h2></h2> -->
+    </div>
+    <h3>DOM: Document Object Model</h3>
+    <h3>BOM: Browser Object Model</h3>
+    <h3>CSSOM: CSS Object Model</h3>
+    <h3>WEB APIs: Document Object Model</h3>
+    <ul>
+      <li>Events</li>
+      <li>Forms</li>
+      <li>AJAX - Fetch</li>
+      <li>History</li>
+      <li>Web Storage</li>
+      <li>Geolocation</li>
+      <li>Drag & Drop</li>
+      <li>Indexed DB</li>
+      <li>Canvas</li>
+      <li>Match Media</li>
+      <li>etc...</li>
+    </ul>
+
+    <script>
+      console.log("----- Web APIs");
+      console.log("//////////////////////////////////////////////////////////////////////");
+
+      console.log(`🖇️`);
+      console.log(window);
+
+      const hablame = "Hola soy tu amigo y docente digital, Alex Hernández";
+      const hablar = (texto) => speechSynthesis.speak(new SpeechSynthesisUtterance(texto));
+      hablar(hablame);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 39 - Ejercicios de Lógica de Programación 6/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 15:--------------------------------------------------");
+      console.log(
+        `- Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.`
+      );
+
+      // Mi solución **********************************************************
+      const convDecBin = (numero = undefined, base = "") => {
+        //Varibles de Decimal a Binario
+        let dividendo = numero;
+        let resto;
+        let cociente;
+        let numBin = "";
+        let numDec = 0;
+
+        // Validaciones regulares
+        if (numero === undefined) return console.warn("Falta el número a convertir");
+        if (typeof numero !== "number")
+          return console.warn("El valor a convertir debe ser numerico");
+        if (!base) return console.warn(`Falta la base a convertir ("B" o "D")`);
+        if (base.length !== 1 || !/B|D/.test(base))
+          return console.warn(`La base debe ser "B" o "D"`);
+        if (base === "D" && /2|3|4|5|6|7|8|9/.test(numero.toString()))
+          return console.warn("El número que ingreso no es base binaria");
+
+        // Formula de Decimal a Binario
+        if (base === "B") {
+          do {
+            resto = dividendo % 2;
+            dividendo = Math.floor(dividendo / 2);
+            numBin += resto.toString();
+          } while (dividendo >= 2);
+          numBin += dividendo.toString();
+          return console.info(`${numero}(D) = ${numBin.split("").reverse().join("")}(B)`);
+        }
+
+        // Formula de Binario a Decimal
+        if (base === "D") {
+          let arrBinario = numero.toString().split("").reverse();
+          arrBinario.forEach((n, i) => {
+            if (Number(n) === 1) {
+              numDec += 2 ** i;
+            }
+          });
+          return console.info(`${numero}(B) = ${numDec}(D)`);
+        }
+      };
+
+      // Mi solución **********************************************************
+      const convDecBin2 = (numero = undefined, base = undefined) => {
+        // console.log("base", base, "numero", numero);
+        // Validaciones regulares
+        if (numero === undefined) return console.warn("Falta el número a convertir");
+        if (typeof numero !== "number")
+          return console.warn("El valor a convertir debe ser numerico");
+        if (base === undefined) return console.warn(`Falta la base a convertir (2 o 10)`);
+        // if (base !== 2 && base !== 10) return console.warn(`---Base debe ser 2 o 10`);
+        if (base === 10 && /2|3|4|5|6|7|8|9/.test(numero.toString()))
+          return console.warn("El número que ingreso no es base binaria");
+
+        // Conversion de Decimal a Binario
+        if (base === 2) {
+          return console.info(`${numero}(D) = ${numero.toString(2)}(B)`);
+        }
+        // Conversión de Binario a Decimal
+        if (base === 10) {
+          return console.log(`${numero}(B) = ${parseInt(numero, 2)}(D)`);
+        } else {
+          return console.warn(`La base debe ser 2 o 10`);
+        }
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      convDecBin();
+      convDecBin("76", "B");
+      convDecBin(1001, undefined);
+      convDecBin(1001, "Y");
+      convDecBin(1201, "D");
+      convDecBin(59, "B");
+      convDecBin(69, "B");
+      convDecBin(123, "B");
+      convDecBin(1025, "B");
+      convDecBin(4, "B");
+      convDecBin(100, "D");
+      convDecBin(1101110, "D");
+      convDecBin(1111011, "D");
+      console.log("/// Otro codigo");
+      convDecBin2();
+      convDecBin2("76", 2);
+      convDecBin2(1001, undefined);
+      convDecBin2(1001, "Y");
+      convDecBin2(1201, 10);
+      convDecBin2(59, 2);
+      convDecBin2(69, 2);
+      convDecBin2(123, 2);
+      convDecBin2(1025, 2);
+      convDecBin2(4, 2);
+      convDecBin2(100, 10);
+      convDecBin2(1101110, 10);
+      convDecBin2(1111011, 10);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 16:--------------------------------------------------");
+      console.log(
+        `- Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.`
+      );
+
+      // Mi solución **********************************************************
+      const montoFinal = (base = undefined, desc = undefined) =>
+        base === undefined
+          ? console.warn("Ha omitido el monto base")
+          : !Number(base) || base < 0
+          ? console.error("La base debe ser un valor numérico positivo")
+          : desc === undefined
+          ? console.warn("Ha omitido el valor del descuento")
+          : !Number(desc) || desc < 0
+          ? console.error("El descuento debe se un valor numérico positivo")
+          : desc > 100
+          ? console.warn("El descuento no puede ser mayor del 100%")
+          : console.info(
+              `Base "${base.toFixed(2)}" descuento "${desc.toFixed(2)}%" Total: "${(
+                base *
+                (1 - desc / 100)
+              ).toFixed(2)}"`
+            );
+
+      // Otra solución ********************************************************
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      montoFinal();
+      montoFinal("lj", 8);
+      montoFinal(-3434, 9);
+      montoFinal(333, undefined);
+      montoFinal(333, "");
+      montoFinal(222, -3);
+      montoFinal(100, 101);
+      montoFinal(100, 15);
+      montoFinal(100, 16.35);
+      montoFinal(100, 100);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 17:--------------------------------------------------");
+      console.log(
+        `- Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).`
+      );
+
+      // Mi solución **********************************************************
+
+      const aniospasados = (fecha = undefined) => {
+        if (fecha === undefined) return console.warn("Ha omitido la fecha");
+        if (typeof fecha != "string")
+          return console.warn("Introduzca una fecha en formato 'dd/mm/aaaa'");
+        let arrFecha = fecha.split("/");
+        let dia = Number(arrFecha[0]);
+        let mes = Number(arrFecha[1]);
+        let anio = Number(arrFecha[2]);
+        if (isNaN(dia) || isNaN(mes) || isNaN(anio))
+          return console.warn("Intodujo una fecha invalida");
+        // Validacion de los numeros de la fecha no sean decimales
+        if (dia % 1 > 0 || mes % 1 > 0 || anio % 1 > 0)
+          return console.error("Valores de fecha invalidos (no pueden ser decimales)");
+        //validacion del año de la fecha
+        if (anio < 1900) return console.warn("El año debe ser mayor de 1900");
+        // Validacion del mes
+        if (mes < 1 || mes > 12) return console.warn("Mes invalido el valor debe ser 1-12");
+        // Validacion del dia
+        let ultDia = new Date(anio, mes, 0).getDate();
+        if (dia > ultDia) return console.warn("Día invalido");
+        // Fecha inicial
+        let fechaIni = new Date(anio, mes, dia);
+
+        // Calculos de la diferencia de Fechas
+        let fechaAct = new Date();
+        let difFechaMs = fechaAct.getTime() - fechaIni.getTime();
+        let difFechaDias = Math.round(difFechaMs / (1000 * 60 * 60 * 24));
+        let difFechaAniosDias = `${Math.floor(difFechaDias / 365)} año(s) y ${Math.floor(
+          difFechaDias % 365
+        )} día(s)`;
+        console.info(difFechaAniosDias);
+      };
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      aniospasados();
+      aniospasados(0980);
+      aniospasados("04/03/1899");
+      aniospasados("04/03/1899");
+      aniospasados("31/12/2020");
+      aniospasados("21/12/1974");
+    </script>
+  </body>
+</html>

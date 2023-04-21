@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 57: this</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- this");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        "this: El objeto contexto de JavaScript en el cual se está ejecutando el código actual."
+      );
+
+      console.log(`🖇️`);
+      console.log(`*-* Ejecutando this en el contexto global, devuelve el objeto windows.`);
+      console.log("this :", this);
+      console.log("window :", window);
+      console.log("this === window :", this === window);
+
+      this.nombre = "Contexto global";
+
+      function imprimir() {
+        console.log(this.nombre);
+      }
+      imprimir();
+
+      const obj = {
+        nombre: "Contexto objeto",
+        imprimir: function () {
+          console.log(this.nombre);
+        },
+      };
+
+      obj.imprimir();
+
+      const obj2 = {
+        nombre: "Contexto objeto 2",
+        imprimir, // aca estoy lamando la función imprimir (la primera creada)
+      };
+
+      obj2.imprimir();
+
+      const obj3 = {
+        nombre: "Contexto objeto 3",
+        // Esto es intencional no se deben usar arrows functions en los objetos porque su this es igual al contexto del objeto padre y no de donde se esta ejecutando.
+        imprimir: () => {
+          console.log(this.nombre);
+        },
+      };
+
+      obj3.imprimir();
+
+      function Persona(nombre = "") {
+        this.nombre = nombre;
+        // console.log(this.nombre);
+        // return function () {
+        //   console.log(this.nombre);
+        // };
+        return () => console.log(this.nombre);
+      }
+
+      let alex = new Persona("Alex");
+      alex();
+    </script>
+  </body>
+</html>

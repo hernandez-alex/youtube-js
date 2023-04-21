@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 51: Maps</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Maps");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        "El objeto Map es un diccionario clave-valor donde cualquier tipo puede ser usado como valor. Esta es la principal característica de los mapas y su mayor diferencia con los objetos, donde las claves sólo pueden ser cadenas de texto. En los objetos Map cualquier elemento, incluidos los objetos como matrices o funciones, pueden ser claves para localizar valores."
+      );
+
+      console.log(`🖇️`);
+      console.log(
+        "*-* Creando un objeto Map (vacio) y asignandoles claves-valores con el método set"
+      );
+      const mapa = new Map();
+      mapa.set("nombre", "Alex");
+      mapa.set("apellido", "Hernández");
+      mapa.set("edad", 48);
+      console.log("mapa :", mapa);
+
+      console.log(`🖇️`);
+      console.log("*-* Creando un objeto Map con valores (ojo como se crea)");
+      const mapa2 = new Map([
+        ["nombre", "Coco"],
+        ["raza", "Mestiza"],
+        ["edad", 4],
+      ]);
+      console.log("mapa2 :", mapa2);
+
+      console.log(`🖇️`);
+      console.log("*-* Cantidad de elementos de un Map, con el método size igual que en el Set");
+      console.log("mapa.size :", mapa.size);
+
+      console.log(`🖇️`);
+      console.log("*-* Evaluar si un Map tiene una clave o no, con el método has()");
+      console.log(`mapa.has("correo") :`, mapa.has("correo"));
+      console.log(`mapa.has("nombre") :`, mapa.has("nombre"));
+
+      console.log(`🖇️`);
+      console.log(`*-* Obtener valores de un Map dada la clave, con el método get()`);
+      console.log(`mapa.get("nombre")`, mapa.get("nombre"));
+      console.log(`mapa.get("apellido")`, mapa.get("apellido"));
+
+      console.log(`🖇️`);
+      console.log(`*-* Reescribir valores de las propiedades dada la clave, con el método set()`);
+      console.log(`mapa.set("nombre", "Alex Williams")`, mapa.set("nombre", "Alex Williams"));
+      console.log(
+        `mapa.set("apellido", "Hernández Bracho")`,
+        mapa.set("apellido", "Hernández Bracho")
+      );
+
+      console.log(`🖇️`);
+      console.log(`*-* Eliminar un juego clave propiedad de un mapa, con el método delete()`);
+      console.log(`Antes de eliminar mapa.has("edad") :`, mapa.has("edad"));
+      mapa.delete("edad");
+      console.log(`Despues de eliminar mapa.delete("edad") :`, mapa.delete("edad"));
+      // Aca vuelvo a crear la clave-valor borrada para no alterar el ejefcicio.
+      mapa.set("edad", 48);
+
+      console.log(`🖇️`);
+      console.log(`*-* Recorrido de un Map, con for of`);
+      console.log(
+        `Si pedimos solo el elmento nos devuelve un array por cada una de ellos con clave valor`
+      );
+      for (const el of mapa) {
+        console.log(el);
+      }
+      console.log(`tambien se puede pedir la clave y el valor como elementos de cada uno...`);
+      for (const [clave, valor] of mapa) {
+        console.log(`Clave: ${clave} , Valor: ${valor}`);
+      }
+
+      console.log(`🖇️`);
+      console.log(`Obtener todas las claves de un Map, destructuring y el método keys()`);
+      const clavesMap = [...mapa.keys()];
+      console.log(clavesMap);
+
+      console.log(`🖇️`);
+      console.log(`Obtener todas los valores de un Map, con destructuring y el método value()`);
+      const valoresMap = [...mapa.values()];
+      console.log(valoresMap);
+    </script>
+  </body>
+</html>

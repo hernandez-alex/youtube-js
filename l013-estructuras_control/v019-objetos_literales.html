@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 19 - Objetos literales</h1>
+    </div>
+
+    <script>
+      // Objetos literales
+      // ----------------------------------------------------------------------
+      // Los objetos literales son una nueva manera simplificada de escribir asignar las variables si estas ya exiten y de escribir las fuciones o metodos. Es lo mismo solo que es la tendencia y hay que adaptarse a lo nuevo...
+      console.log("----- Objetos literales");
+      console.log("");
+
+      let literalNombre = "Coco";
+      let literalEdad = 4;
+
+      // Esta es la manera como se hacia antes
+      console.log("*-* Forma antigua sin objetos literales");
+      const mascotaLiteral = {
+        literalNombre: literalNombre,
+        literalEdad: literalEdad,
+        literalDueño: "Alex",
+        ladrar: function () {
+          console.log("Guauu, Guauu!!");
+        },
+      };
+      console.log(mascotaLiteral);
+      mascotaLiteral.ladrar();
+
+      // Esta es la forma moderna de escribir los objetos literales...
+      console.log("");
+      console.log("*-* Forma moderna con objetos literales");
+      const literalPet = {
+        literalNombre,
+        literalEdad,
+        literalDueño: "Monica",
+        ladrar() {
+          console.log("Guauu Guauu Guauu!!!");
+        },
+      };
+      console.log(literalPet);
+      literalPet.ladrar();
+    </script>
+  </body>
+</html>

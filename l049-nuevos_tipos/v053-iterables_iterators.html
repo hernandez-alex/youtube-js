@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 53: Iterables & Iterators</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Iterables & Iterators");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(`🖇️`);
+      console.log("*-* Creando un objeto iterable y su iterador (tipo array)");
+      // const iterable = [1, 2, 3, 4, 5];
+      // const iterable = "Hola Alex";
+      // const iterable = new Set([1, 2, 3, 3, 3, 3, 4, 4, 5]);
+      const iterable = new Map([
+        ["nombre", "Alex"],
+        ["edad", 35],
+      ]);
+      const iterador = iterable[Symbol.iterator]();
+
+      console.log(`🖇️`);
+      console.log("*-* Ascediendo al iterador del objeto iterable");
+      console.log("iterable :", iterable);
+      console.log("iterador :", iterador);
+
+      console.log(`🖇️`);
+      console.log("*-* Recoriendo el iterador de nuestro iterable con el método next");
+      // Recorido manual
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+
+      // recorrido con un while
+      let next = iterador.next();
+
+      while (!next.done) {
+        console.log("Objeto next :", next, "valor :", next.value);
+        next = iterador.next();
+      }
+    </script>
+  </body>
+</html>

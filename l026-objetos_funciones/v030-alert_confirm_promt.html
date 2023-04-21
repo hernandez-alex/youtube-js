@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 30 - alert, confirm y promt</h1>
+    </div>
+
+    <script>
+      // Objeto console
+      // ----------------------------------------------------------------------
+      console.log("----- Alert, Confirm, Promt");
+      // Estos métodos cuelgan del objeto window de los navegadores
+      console.log(window);
+      console.log("*-* alert (Alerta)");
+      // alert("Esto es un alerta!, (Solo muestran el botón de aceptar)");
+      // Una alerta no es nedesario guardarla en una variable, siempre va a dar undefine.
+      let alerta = alert("Esto es un alerta!, (Solo muestran el botón de aceptar)");
+      console.log(alerta);
+      console.log("");
+
+      console.log("*-* confirm (Confirmacion)");
+      // confirm("¿Esto es un confirmación?, (Muestran los botones de aceptar o cancelar)");
+      let confirmacion = confirm(
+        "Esto es un confirm?, (Muestran los botones de aceptar o cancelar)"
+      );
+      console.log(confirmacion);
+      console.log("");
+
+      console.log("*-* prompt (Solicitud)");
+      // prompt("Esto es un prompt: (Permite al usuario ingresar un valor, dos botones)");
+      let apuntador = prompt(
+        "Esto es un prompt: (Permite solicitar un valor, Muestra los botones aceptar y cancelar)"
+      );
+      console.log(apuntador);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 21 - Funciones flecha (arrow function)</h1>
+    </div>
+
+    <script>
+      // Funciones flecha Arrow Functions
+      // ----------------------------------------------------------------------
+      // Ojo: las arrow function no tienen el objeto this es decir el objeto thie da las arrows functions es window independientemente de donde se utilicen...
+      console.log("----- Arrow functions");
+      console.log("");
+      console.log("*-* Arrow function");
+      const saludarArrow = () => console.log("hola");
+      saludarArrow();
+
+      console.log("");
+      console.log("*-* Arrow function con parámetro");
+      const saludarParametro = (nombre) => console.log(`Hola ${nombre}`);
+      saludarParametro("Monica");
+
+      console.log("");
+      console.log("*-* Function sumar normal");
+      const sumarNormal = function (a, b) {
+        return a + b;
+      };
+      console.log("Sumar normal:", sumarNormal(100, 200));
+
+      console.log("");
+      console.log("*-* Arrow Function sumar");
+      const sumarArrowFun = (a, b) => a + b;
+      console.log("Sumar arrow function:", sumarArrowFun(10, 20));
+
+      console.log("");
+      console.log("*-* Arrow function varias líneas");
+      const arrowFunctionVariasLineas = () => {
+        console.log("Línea uno");
+        console.log("Línea dos");
+        console.log("Línea tres");
+      };
+      arrowFunctionVariasLineas();
+
+      console.log("");
+      console.log("*-* Arrow function (ejemplo recorriendo arreglo forEach)");
+      let arrNumeros = [10, 20, 30, 40, 50];
+      arrNumeros.forEach((el, index) => console.log(`Índice ${index} valor ${el}`));
+
+      console.log("");
+      console.log("*-* Arrow function y el objeto this");
+      console.log("function declarada y el objeto this");
+      function perroDeclarado() {
+        console.log(this);
+      }
+      perroDeclarado();
+
+      console.log("");
+      console.log("*-* arrow function y el objeto this");
+      const perroDeclaradoArrow = () => {
+        console.log(this);
+        console.log(
+          "Ojo: las arrow function no tienen el objeto this es decir el objeto this da las arrow functions es window independientemente de donde se utilicen..."
+        );
+      };
+      perroDeclaradoArrow();
+
+      console.log("");
+      console.log("*-* arrow function y el objeto this dentro de un objeto");
+      const perro = {
+        nombre: "coco",
+        perroDecArrowDentro: () => {
+          console.log(this);
+        },
+      };
+      perro.perroDecArrowDentro();
+
+      console.log("");
+      console.log("*-* function normal y el objeto this dentro de un objeto");
+      const perro2 = {
+        nombre: "coco",
+        perroDecDentro() {
+          console.log(this);
+        },
+      };
+      perro2.perroDecDentro();
+    </script>
+  </body>
+</html>

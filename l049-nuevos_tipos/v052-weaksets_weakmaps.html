@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 52: WeakSets & WeakMaps</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Maps");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        "El objeto WeekSet no puede inicializar con valores, es decir debe crearse vacio y luego se le añadariran los valores"
+      );
+      console.log(`🖇️`);
+      console.log("*-* Creando un WeekSet y agregando valores");
+      const ws = new WeakSet();
+
+      // const ws = new weakSet([1, 2, 3, "3"]); // esto da error
+      // El objeto WeekSet no puede inicializar con valores, es decir debe crearse vacio y luego se le añadariran los valores
+
+      let valor1 = { val1: 1 };
+      let valor2 = { val2: 2 };
+      let valor3 = { val3: 3 };
+
+      // Los weakSet solo pueden alamacenar valores de tipo objeto
+      // ws.add(1); // Esto produce un error ya que uno no es un objeto de tipo {}
+      ws.add(valor1);
+      ws.add(valor2);
+      ws.add(valor3);
+      console.log("ws :", ws);
+
+      console.log(`🖇️`);
+      console.log("*-* Consulta de valores a un WeakSet");
+      console.log("ws.has(valor1):", ws.has(valor1), "(Cosulta de valores en un Weak set)");
+
+      console.log(`🖇️`);
+      console.log("*-* Borrado de valores en un Weakset");
+      ws.delete(valor3);
+      console.log("ws.has(valor3):", ws.has(valor3), "(Cosulta de valores en un Weak set)");
+      // Creamos la propiedad 3 nuevamente para restaurar el ejercicio
+      ws.add(valor3);
+
+      // console.log(`🖇️`);
+      // console.log("*-* Mostrando las propiedades de los WeakSet con un setInterval");
+      // const setInt = setInterval(() => {
+      //   console.log(ws);
+      // }, 1000);
+
+      // console.log(`🖇️`);
+      // console.log("*-* Limpiando las propiedades del WeekSet con un setTimeout");
+      // const setTim = setTimeout(() => {
+      //   valor1 = null;
+      //   valor2 = null;
+      //   valor3 = null;
+      //   console.log("Se reasignaron valor1 valor2 valor3 a null");
+      // }, 2000);
+
+      // setTimeout(() => {
+      //   clearInterval(setInt);
+      // }, 4000);
+
+      console.log(`🖇️`);
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log("*-* Creando un WeakMap");
+      const wm = new WeakMap();
+      let llave1 = {};
+      let llave2 = {};
+      let llave3 = {};
+
+      wm.set(llave1, 1);
+      wm.set(llave2, 2);
+      console.log(wm);
+
+      console.log(`🖇️`);
+      console.log("*-* Verificando la existencia de objetos en un WeakMap");
+      console.log("wm.has(llave1) :", wm.has(llave1));
+      console.log("wm.has(llave3) :", wm.has(llave3));
+      wm.set(llave3, 3);
+
+      console.log(`🖇️`);
+      console.log("*-* Obtener los valores de en un WeakMap");
+      console.log("wm.get(llave1) :", wm.get(llave1));
+      console.log("wm.get(llave3) :", wm.get(llave3));
+
+      console.log(`🖇️`);
+      console.log("*-* Eliminar valores de en un WeakMap");
+      wm.delete(llave2);
+      console.log(wm);
+
+      // Restauramos la llave2 en el wm para continuar con el ejercicio.
+      wm.set(llave2, 2);
+      console.log(wm);
+
+      // veamos el comportamiento con un setInterval y el setTimeout
+      const setInt2 = setInterval(() => {
+        console.log(wm);
+      }, 1000);
+
+      setTimeout(() => {
+        llave1 = null;
+        llave2 = null;
+        llave3 = null;
+        console.log("Acabo de nulificar las llaves, veamos que pasa.");
+      }, 4000);
+
+      // setTimeout(() => {
+      //   clearInterval(setInt2);
+      // }, 7000);
+    </script>
+  </body>
+</html>

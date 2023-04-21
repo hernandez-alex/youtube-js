@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 40: Ejercicios de Lógica de Programación 7/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 18: Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.`
+      );
+
+      // Mi solución **********************************************************
+      const contarVocalesConsonantes = (texto = "") => {
+        let numVoc = 0;
+        let numCon = 0;
+        let caracter;
+
+        if (!texto) return console.warn("Ha omitido el texto");
+        if (typeof texto !== "string") return console.warn("Debe introducir un texto valido");
+
+        for (let i = 0; i < texto.length; i++) {
+          caracter = texto[i];
+          if (/[áéíóúÁÉÍÓÚ]|[aeiouAEIOU]/.test(caracter)) {
+            numVoc++;
+          }
+          if (/[A-Z]|[Ñ]|[a-z]|[ñ]/.test(caracter) && !/[áéíóúÁÉÍÓÚ]|[aeiouAEIOU]/.test(caracter)) {
+            numCon++;
+          }
+        }
+        console.info(`${texto} contiene ${numVoc} vocales y ${numCon} consonates.`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      contarVocalesConsonantes();
+      contarVocalesConsonantes(1);
+      contarVocalesConsonantes("Hola mundo");
+      contarVocalesConsonantes("H.o.l.a M.u.n.d.o-Tontíño");
+      console.log();
+
+      // Otra solución ********************************************************
+      const contarLetras = (cadena = "") => {
+        if (!cadena) return console.warn("Ha omitido el texto");
+        if (typeof cadena !== "string") return console.warn("Debe introducir un texto valido");
+
+        let vocales = 0;
+        let consonantes = 0;
+        let cadenaMin = cadena.toLowerCase();
+
+        for (let letra of cadenaMin) {
+          if (/[aeiouáéíóú]/.test(letra)) vocales++;
+          if (/[bcdfghjklmnñprstvwxyz]/.test(letra)) consonantes++;
+        }
+        return console.info({
+          cadena,
+          consonantes,
+          vocales,
+        });
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con otro código");
+      contarLetras();
+      contarLetras(1);
+      contarLetras("Hola mundo");
+      contarLetras("H.o.l.a M.u.n.d.o-Tontíño");
+      console.log();
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 19: Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.`
+      );
+
+      // Mi solución **********************************************************
+      const nombreValido = (nombre = "") => {
+        let caracter;
+        let valido = true;
+        if (!nombre) return console.warn("Ha omitido el nombre");
+        if (typeof nombre != "string") return console.warn("Debe introducir un texto tipo string");
+        for (const caracter of nombre.toLowerCase()) {
+          if (!/^[A-Za-zÑñ\s]+$/) valido = false;
+          break;
+        }
+        // for (let i = 0; i < nombre.length; i++) {
+        //   caracter = nombre[i];
+        //   if (!/[A-Z]|[Ñ]|[a-z]|[ñ]|[ ]|[AEIOUÁÉÍÓÚaeiouáéíóú]/.test(caracter)) {
+        //     valido = false;
+        //     break;
+        //   }
+        // }
+        return valido ? console.info(`(V) ${nombre}`) : console.info(`(NV) ${nombre} `);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      nombreValido("Alex Hernández");
+      nombreValido("Monica Marquez");
+      nombreValido("Carlos Peñaranda");
+      nombreValido("Jose Luis 78");
+      console.log();
+
+      // Otra solución ********************************************************
+      const validarNombre = (nombre) => {
+        if (!nombre) return console.warn("Ha omitido el nombre");
+        if (typeof nombre != "string") return console.warn("Debe introducir un texto tipo string");
+
+        // Nota sobre la expresión regular: El circunflejo indica que no puede haber nada antes, /s representa el espacio en blanco, +$ indica que no puede haber nada despues, y la g indica que busque en todos los caracteres del string nombre
+        let expReg = /^[A-Za-zÑñáéíóúÁÉÍÓÚ\s]+$/g.test(nombre);
+
+        return expReg
+          ? console.info(`${nombre} Es un numbre valido`)
+          : console.info(`${nombre} No es un nombre valido`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con otro código");
+      validarNombre("Alex Hernández");
+      validarNombre("Monica Marquez");
+      validarNombre("Carlos Peñaranda");
+      validarNombre("Jose Luis 78");
+      console.log();
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 20: Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.`
+      );
+
+      // Mi solución **********************************************************
+      const emailValido = (correo = "") => {
+        let aroba = 0;
+        let punto = 0;
+        let valido = true;
+        // Validación de entrada
+        if (!correo) return console.warn("Ha omitido el correo");
+        if (typeof correo != "string") return console.warn("Debe introducir un texto tipo string");
+        // Validación principal
+        for (let i = 0; i < correo.length; i++) {
+          if (!/[a-z]|[0-9]|[-_.@]/.test(correo[i])) {
+            return console.info(`(NV) ${correo} (${correo[i]} es un caracter no permitido)`);
+          }
+          if (correo[i] === "@") aroba++;
+          if (correo[i] === ".") punto++;
+        }
+
+        if (aroba !== 1) {
+          return aroba > 1
+            ? console.info(`(NV) ${correo} (Caracter "@" solo puede usarse una vez.)`)
+            : console.info(`(NV) ${correo} (Falta el caracter "@".)`);
+        }
+
+        if (punto < 1) {
+          return console.info(`(NV) ${correo} (Debe haber al menos un "." en el correo)`);
+        }
+        return console.info(`(V) ${correo}`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      emailValido();
+      emailValido(2342);
+      emailValido("hernandezaw@gmail.com");
+      emailValido("marquezme@gmail.com");
+      emailValido("hernandezaw@gma*il.com");
+      emailValido("hernandezaw-gmail.com");
+      emailValido("m@rquezme@gmail.com");
+      emailValido("hernandezaw@gmailcom");
+      console.log();
+
+      // Otra solución ********************************************************
+      const validarEmail = (email = "") => {
+        // Validación de entrada
+        if (!email) return console.warn("Ha omitido el correo");
+        if (typeof email != "string") return console.warn("Debe introducir un texto tipo string");
+
+        let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+          email
+        );
+
+        return expReg ? console.info(`(V) ${email}`) : console.info(`(NV) ${email}`);
+      };
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con otro código");
+      validarEmail();
+      validarEmail(2342);
+      validarEmail("hernandezaw@gmail.com");
+      validarEmail("marquezme@gmail.com");
+      validarEmail("hernandezaw@gma*il.com");
+      validarEmail("hernandezaw-gmail.com");
+      validarEmail("m@rquezme@gmail.com");
+      validarEmail("hernandezaw@gmailcom");
+    </script>
+  </body>
+</html>

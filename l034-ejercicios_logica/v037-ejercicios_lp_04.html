@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 37 - Ejercicios de Lógica de Programación 4/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 9:--------------------------------------------------");
+      console.log(`- Programa una función que obtenga un numero aleatorio entre 501 y 600`);
+
+      // Mi solución **********************************************************
+      const numeroAleatorio = (numMenor = undefined, numMayor = undefined) =>
+        numMenor === undefined
+          ? console.warn("Ha omitido el número inicial")
+          : numMayor === undefined
+          ? console.warn("Ha omitido el número final")
+          : !isFinite(numMenor)
+          ? console.error("El valor inicial no es un número")
+          : !isFinite(numMayor)
+          ? console.error("El valor final no es un número")
+          : console.info(Math.floor(Math.random() * (numMayor - numMenor + 1) + numMenor));
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      numeroAleatorio();
+      numeroAleatorio(1);
+      numeroAleatorio("a", 3);
+      numeroAleatorio(1, "a");
+      numeroAleatorio(501, 550);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 10:--------------------------------------------------");
+      console.log(
+        `- Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.`
+      );
+
+      // Mi solución **********************************************************
+      const capicua = (numero = undefined) =>
+        numero === undefined
+          ? console.warn("Ha omitido el número")
+          : !isFinite(numero)
+          ? console.error("El valor ingresado no es numérico")
+          : !(numero % 1 === 0)
+          ? console.error("El número no es entero")
+          : numero < 0
+          ? console.error("El número no es positivo")
+          : numero.toString() !== numero.toString().split("").reverse().join("")
+          ? console.info(`${numero} NO es capicua`)
+          : console.info(`${numero} SI es Capicua`);
+
+      // Otra solución ********************************************************
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi código");
+      capicua();
+      capicua("dsd");
+      capicua(3.3);
+      capicua(-3);
+      capicua(123);
+      capicua(2002);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 11:--------------------------------------------------");
+      console.log(
+        `- Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.`
+      );
+
+      // Mi solución **********************************************************
+      const factorial = (numero = undefined) => {
+        if (numero === undefined) return console.warn("Ha omitido el número");
+        if (!isFinite(numero)) return console.warn("El valor ingresado no es númerico");
+        if (!(numero % 1 === 0)) return console.error("El número no es entero");
+        if (numero <= 0) return console.error("El número no es positivo mayor a cero");
+        let resultado = 1;
+        for (let i = 1; i <= numero; i++) {
+          resultado *= i;
+        }
+        return console.info(`${numero}! = ${resultado}`);
+      };
+
+      // --- Pruebas del ejercicio
+      factorial();
+      factorial("lkjl");
+      factorial(3.5);
+      factorial(-6);
+      factorial(0);
+      factorial(1);
+      factorial(2);
+      factorial(3);
+      factorial(5);
+      console.log("/// Pruebas con mi codigo");
+    </script>
+  </body>
+</html>

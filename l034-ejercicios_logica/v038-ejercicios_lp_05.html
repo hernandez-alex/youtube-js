@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 38 - Ejercicios de Lógica de Programación 5/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 12:--------------------------------------------------");
+      console.log(
+        `- Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.`
+      );
+
+      // Mi solución **********************************************************
+      const numeroPrimo = (numero = undefined) => {
+        if (numero === undefined) return console.warn("Ha omitido el número");
+        if (typeof numero != "number") return console.warn("El tipo de datos no es númerico");
+        if (numero <= 1 || numero % 1 !== 0)
+          return console.warn("El número debe ser entero mayor a 1");
+        divisible = false;
+        for (let i = 2; i < numero; i++) {
+          if (numero % i === 0) {
+            divisible = true;
+            break;
+          }
+        }
+        return divisible === false
+          ? console.info(`${numero} Si es un número primo`)
+          : console.info(`${numero} NO es un numero primo`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi codigo");
+      numeroPrimo();
+      numeroPrimo("ljkl");
+      numeroPrimo(-3);
+      numeroPrimo(0);
+      numeroPrimo(1);
+      numeroPrimo(2);
+      numeroPrimo(3);
+      numeroPrimo(9971);
+      numeroPrimo(9973);
+      numeroPrimo(99987);
+      numeroPrimo(99989);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 13:--------------------------------------------------");
+      console.log(
+        `- Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.`
+      );
+
+      // Mi solución **********************************************************
+      const parImpar = (numero = undefined) =>
+        numero === undefined
+          ? console.warn("Ha omitido el número")
+          : typeof numero != "number"
+          ? console.warn("El tipo de datos no es numérico")
+          : numero % 1 !== 0
+          ? console.warn("El número ingresado no es un entero")
+          : numero % 2 === 0
+          ? console.info(`${numero} es Par`)
+          : console.info(`${numero} es Impar`);
+      // Otra solución ********************************************************
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi codigo");
+      parImpar();
+      parImpar("");
+      parImpar("3");
+      parImpar("lkjlkj");
+      parImpar(3.4);
+      parImpar(493);
+      parImpar(704);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 14:--------------------------------------------------");
+      console.log(
+        `- Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.`
+      );
+
+      // Mi solución **********************************************************
+      const convertirGrados = (temp = undefined, grados = "") =>
+        temp === undefined
+          ? console.warn("Ha omitido la temperatura")
+          : typeof temp !== "number"
+          ? console.warn("La temperatura debe ser un valor númerico")
+          : !grados
+          ? console.warn(`Ha omitido la conversion ("C" o "F")`)
+          : grados === "C"
+          ? console.info(`${temp}°C = ${Math.floor((temp * (9 / 5) + 32) * 100) / 100}°F`)
+          : grados === "F"
+          ? console.info(`${temp}°F = ${Math.floor((temp - 32) * (5 / 9) * 100) / 100}°C`)
+          : console.warn(`Escriba "C" para Celsius o "F" para Fahrenheit`);
+
+      const convertirGrados2 = (temp = undefined, grados = "") =>
+        temp === undefined
+          ? console.warn("Ha omitido la temperatura")
+          : typeof temp !== "number"
+          ? console.warn("La temperatura debe ser un valor númerico")
+          : !grados
+          ? console.warn(`Ha omitido la conversion ("C" o "F")`)
+          : grados.length !== 1 || !/C|F/.test(grados)
+          ? console.warn(`Escriba "C" para Celsius o "F" para Fahrenheit`)
+          : grados === "C"
+          ? console.info(`${temp}°C = ${Math.floor((temp * (9 / 5) + 32) * 100) / 100}°F`)
+          : grados === "F"
+          ? console.info(`${temp}°F = ${Math.floor((temp - 32) * (5 / 9) * 100) / 100}°C`)
+          : console.warn(`Escriba "C" para Celsius o "F" para Fahrenheit`);
+
+      // --- Pruebas del ejercicio
+      console.log("/// Pruebas con mi codigo");
+      convertirGrados();
+      convertirGrados("");
+      convertirGrados("lkjlk");
+      convertirGrados("33");
+      convertirGrados(0);
+      convertirGrados(0, "lkjlkj");
+      convertirGrados(0, 25);
+      convertirGrados(0, "C");
+      convertirGrados(0, "F");
+      convertirGrados(95, "C");
+      convertirGrados(203, "F");
+      convertirGrados(95, "c");
+      convertirGrados(203, "f");
+      console.log("/// Pruebas con otro codigo");
+      convertirGrados2();
+      convertirGrados2("");
+      convertirGrados2("lkjlk");
+      convertirGrados2("33");
+      convertirGrados2(0);
+      convertirGrados2(0, "lkjlkj");
+      convertirGrados2(0, 25);
+      convertirGrados2(0, "C");
+      convertirGrados2(0, "F");
+      convertirGrados2(95, "C");
+      convertirGrados2(203, "F");
+      convertirGrados2(95, "c");
+      convertirGrados2(203, "f");
+    </script>
+  </body>
+</html>

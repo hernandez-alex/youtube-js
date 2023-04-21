@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 56: Propiedades Dinámicas</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Propiedades Dinámicas");
+      console.log("//////////////////////////////////////////////////////////////////////");
+
+      console.log(`🖇️`);
+      console.log(
+        "*-* Son propiedades que como su nombre lo índica se obtienen dinámicamente, por lo general de un API, en nuestro caso simularemos su funcionamiento ya que aún no hemos llegado a ese punto de estudio."
+      );
+
+      // Creamos un objeto vacio
+      const objUsuarios = {};
+
+      // Creamos un array, el cual es una simulación de datos obtenidos de un API
+      const usuarios = ["Monica", "Patricia", "Alex", "Rosa", "Maribel", "Carlos", "Juan"];
+
+      // Mostramos el objeto usuario antes del llenado con propiedades dinámicas
+      console.log("- Objeto objUsuario antes de ser llenado dinámicamente");
+      console.log(objUsuarios);
+
+      // Utilizamos un froEach para leer el array de usuarios y para cada uno de ellos valiendonos de un string literal dinámico y el Index del array creamos las propiedades dinámicas requeridas
+      usuarios.forEach((usuario, index) => (objUsuarios[`id_${index}`] = usuario));
+
+      // Mostramos el resultado de las propiedades creadas en el objeto objUsuario con sus respectivos valores
+      console.log("- Objeto objUsuario despues de ser llenado dinámicamente");
+      console.log(objUsuarios);
+    </script>
+  </body>
+</html>

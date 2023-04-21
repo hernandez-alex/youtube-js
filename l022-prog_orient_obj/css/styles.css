@@ -1,0 +1,53 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: rgb(10, 60, 120);
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+a:link,
+a:visited {
+  color: rgb(10, 60, 120);
+}
+a:hover {
+  color: #ffb347;
+}
+h1,
+h2 {
+  display: inline-block;
+  margin: 0 2rem;
+  font-size: 36px;
+  color: #ffb347;
+  padding: 0.25rem 1rem;
+  text-align: center;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 28px;
+  color: rgb(10, 60, 120);
+  margin: 1rem 2rem;
+}
+.titulo {
+  background-color: rgb(10, 60, 120);
+  width: 100%;
+}
+ol {
+  margin-left: 4rem;
+}
+
+ol li {
+  font-size: 24px;
+  padding-bottom: 1rem;
+}

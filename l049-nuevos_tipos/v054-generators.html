@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 54: Generators</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Generators");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(`🖇️`);
+      console.log("*-* Creando una función generadora");
+      function* iterable() {
+        yield "hola";
+        console.log("Hola consola");
+        yield "hola 2";
+        console.log("Seguimos con más instrucciones de nuestro código");
+        yield "Hola 3";
+        yield "Hola 4";
+      }
+
+      console.log(`🖇️`);
+      console.log("*-* Recorriendo el objeto iterable (funcion iteradora) manualmente");
+      let iterador = iterable();
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+      // console.log(iterador.next());
+
+      console.log(`🖇️`);
+      console.log("*-* Recorriendo el objeto iterable (funcion iteradora) con un While");
+      // let next = iterador.next();
+      // while (!next.done) {
+      //   console.log("Objeto next :", next, "valor :", next.value);
+      //   next = iterador.next();
+      // }
+
+      console.log(`🖇️`);
+      console.log("*-* Recorriendo el objeto iterable (funcion iteradora) con un for of");
+      for (const y of iterador) {
+        console.log(y);
+      }
+
+      console.log(`🖇️`);
+      console.log("*-* Guardado en un array de los yield del objeto iterable (funcion iteradora)");
+      const arr = [...iterable()];
+      console.log(arr);
+
+      console.log(`🖇️`);
+      console.log("*-* Función cuadrado de los yield del objeto iterable (funcion iteradora)");
+      function cuadrado(valor) {
+        setTimeout(() => {
+          console.log({ valor, resultado: valor ** 2 });
+          // return {
+          //   valor,
+          //   resultado: valor ** 2,
+          // };
+        }, Math.random() * 1000);
+      }
+
+      function* generator() {
+        console.log("Inicia generator");
+        yield cuadrado(0);
+        yield cuadrado(1);
+        yield cuadrado(2);
+        yield cuadrado(3);
+        yield cuadrado(4);
+        yield cuadrado(5);
+        console.log("Finaliza generator");
+      }
+
+      let gen = generator();
+
+      for (const y of gen) {
+        console.log(y);
+      }
+    </script>
+  </body>
+</html>

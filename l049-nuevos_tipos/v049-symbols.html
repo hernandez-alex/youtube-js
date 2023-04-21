@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 49: Symbols</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Symbols");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* La característica principal de los simbolos es que sus referencias son únicas, es decir no se listan en las propiedades normales de un objeto..., fijese al comparar dos objetos de tipo symbol ID1 y ID2`
+      );
+      const ID1 = Symbol();
+      const ID2 = Symbol();
+      console.log(ID1, ID2);
+      console.log(typeof ID1, typeof ID2);
+      console.log(`ID1 === ID2 : `, ID1 === ID2);
+
+      console.log(`🖇️`);
+      console.log(
+        "A los simbolos tambien se les puede asignar un nombre, escribiendolo entre los parentesis..."
+      );
+      const NOMBRE = Symbol("NOMBRE");
+      const SALUDAR = Symbol("SALUDAR");
+
+      const persona = {
+        [NOMBRE]: "Alex",
+        edad: 48,
+      };
+      console.log(persona);
+      persona.NOMBRE = "Alex Hernández";
+      console.log(persona);
+      console.log(persona.NOMBRE);
+      console.log(persona[NOMBRE]);
+
+      persona[SALUDAR] = function (nombre = "Amigo") {
+        console.log(`Hola, como estas ${nombre}?`);
+      };
+      console.log(persona);
+      persona[SALUDAR]();
+      persona[SALUDAR]("Monica");
+
+      console.log("🖇️");
+      console.log(
+        `*-* Uno de los principales atractivos que tienen los simbolos es que estos se mantienen privados, como se muestra a continuación.`
+      );
+      console.log("Recorriendo el objeto");
+      for (const propiedad in persona) {
+        console.log(`${propiedad}: ${persona[propiedad]}`);
+        console.log();
+      }
+
+      console.log("🖇️");
+      console.log(`*-* Como listar los simbolos de un objeto`);
+      console.log(Object.getOwnPropertySymbols(persona));
+    </script>
+  </body>
+</html>

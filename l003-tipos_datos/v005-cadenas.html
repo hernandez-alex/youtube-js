@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 5 - Cadenas de textos (strings)</h1>
+    </div>
+
+    <script>
+      // Cadenas de texto
+      // ----------------------------------------------------------------------
+      console.log("----- Cadenas de texto");
+      console.log("");
+
+      let nombre = "Alex";
+      let apellido = "Hernandez";
+      let saludo = new String("Hola mundo!");
+      let lorem =
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, enim fugiat culpa consequuntur porro delectus? Quaerat provident pariatur est minus atque hic obcaecati quo eius consequatur nostrum ad, ullam consequuntur.";
+      let cadena = "Monica Marquez marquezme@gmail.com";
+      console.log(
+        nombre.length,
+        apellido.length,
+        saludo.length,
+        saludo.length,
+        nombre.toLocaleLowerCase(),
+        apellido.toUpperCase(),
+        lorem.includes("amet"),
+        lorem.includes("alex"),
+        cadena.split(" ")
+      );
+    </script>
+  </body>
+</html>

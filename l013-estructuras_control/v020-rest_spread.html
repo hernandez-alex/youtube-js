@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 20 - Parámetros REST & Spread Operator</h1>
+    </div>
+
+    <script>
+      // Parametro REST y Spread operator
+      // ----------------------------------------------------------------------
+      console.log("----- Parámetro rest y spread operator");
+      console.log("");
+      console.log("*-* Ejemplo de función con parámetro rest");
+      function sumar(a, b, ...c) {
+        let resultado = a + b;
+        c.forEach(function (n) {
+          resultado += n;
+        });
+        return resultado;
+      }
+      console.log(sumar(1, 2));
+      console.log(sumar(2, 4, 6, 12));
+      console.log(sumar(1, 2, 3, 4, 5, 6));
+
+      const arrSpread1 = [1, 2, 3, 4, 5];
+      const arrSpread2 = [6, 7, 8, 9, 0];
+
+      console.log("");
+      console.log("*-* Ejemplo de spread operator");
+      console.log("arrSpread1", arrSpread1, "arrSpread2", arrSpread2);
+
+      // manera rudimentaría de hacer el arreglo, sin usar el spread operator (no recomendada, solo lo hago para demostrarme a mi mismo que puedo, no se recomienda, muy mala practica)
+      console.log("");
+      console.log("*-* Manera rudimentaria sin usar el spread operator...");
+      const arrUnion12 = [];
+      arrSpread1.forEach(function (n) {
+        arrUnion12.push(n);
+      });
+      arrSpread2.forEach(function (n) {
+        arrUnion12.push(n);
+      });
+      console.log("arrUnion12", arrUnion12);
+
+      // Usando el spread operator da el mismo resultado más facil y con mucho menos cócigo.
+      console.log("");
+      console.log("*-* Usando el spread operator...");
+      arrSpread12 = [...arrSpread1, ...arrSpread2];
+      console.log("arrSpread12", arrSpread12);
+    </script>
+  </body>
+</html>

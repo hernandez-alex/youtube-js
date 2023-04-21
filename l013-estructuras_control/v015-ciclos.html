@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 15 - Ciclos (loops)</h1>
+    </div>
+
+    <script>
+      // Ciclos (loops)
+      // ----------------------------------------------------------------------
+      console.log("----- Ciclos (loops)");
+      console.log("----- while, do while, for, for in , for of");
+      console.log("");
+
+      console.log("*-* while");
+      let contador = 0;
+      while (contador < 10) {
+        console.log("while", contador);
+        contador++;
+      }
+
+      console.log("");
+      console.log("*-* do while");
+      contador = 0;
+      do {
+        console.log("do-while: ", contador);
+        contador++;
+      } while (contador < 10);
+
+      console.log("");
+      console.log("*-* for");
+      for (let i = 0; i < 10; i++) {
+        console.log("for: ", i);
+      }
+
+      console.log("");
+      console.log("*-* for en un arreglo");
+      let numerosFor = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+      for (let i = 0; i < numerosFor.length; i++) {
+        console.log("for en un arreglo: ", numerosFor[i]);
+      }
+
+      console.log("");
+      console.log("*-* for in (recorrer objetos {})");
+      const objForIn = {
+        nombre: "Alex",
+        apellido: "Hernández",
+        edad: "48",
+      };
+      for (const propiedad in objForIn) {
+        if (Object.hasOwnProperty.call(objForIn, propiedad)) {
+          console.log("key:", propiedad, "value:", objForIn[propiedad]);
+        }
+      }
+
+      console.log("");
+      console.log("for of (recorrer cualquier objeto)");
+      for (const elemento of numerosFor) {
+        console.log("for of:", elemento);
+      }
+      let objTextString = "Cadena de Texto";
+      for (const caracter of objTextString) {
+        console.log("for of:", caracter);
+      }
+    </script>
+  </body>
+</html>

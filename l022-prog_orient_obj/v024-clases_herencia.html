@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 24 - Clases y Herencia</h1>
+    </div>
+
+    <script>
+      // Clases y Herencia
+      // ----------------------------------------------------------------------
+      console.log("----- Clases y Herencia");
+      console.log("");
+      console.log("*-* Creando un clase");
+      class Animal {
+        // Parámentros
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+        // Métodos
+        sonar() {
+          console.log("Hago sonidos porque etoy vivo.");
+        }
+        saludar() {
+          console.log(`Hola me llamo ${this.nombre}`);
+        }
+      }
+      const mini = new Animal("Mini Mouse", "Hembra");
+      console.log(mini);
+      mini.saludar();
+      mini.sonar();
+
+      console.log("");
+      console.log("*-* Herencia de clases");
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          // super es un método que manda a llamar el constructor de la clase padre
+          super(nombre, genero);
+          this.tamanio = tamanio;
+        }
+        // sobreescritura de métodos
+        sonar() {
+          console.log("Soy un perro y mi sonido es un ladrido.");
+        }
+        ladrar() {
+          console.log("Guau Guau...");
+        }
+        // Métodos estáticos
+        // Es aquel que se puede ejecutar sin necesidad de instanciar la clase
+        static queEres() {
+          console.log(
+            "Los perros somos animales mamiferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre."
+          );
+        }
+      }
+
+      const scooby = new Perro("Scooby Doo", "Macho", "Grande");
+      console.log(scooby);
+      scooby.saludar();
+      scooby.sonar();
+      scooby.ladrar();
+
+      // llamado de un metodo estático de la clase perro
+      console.log("");
+      console.log("*-* Métodos estáticos");
+      Perro.queEres();
+    </script>
+  </body>
+</html>

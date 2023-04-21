@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 14 - Condicionales</h1>
+    </div>
+
+    <script>
+      // Condicionales
+      // ----------------------------------------------------------------------
+      console.log("-----Estructuras condicionales o de Control");
+      console.log("----- if - else");
+      let edad = 27;
+      if (edad >= 18) {
+        console.log("Eres mayor de edad");
+      } else {
+        console.log("Eres menor de edad");
+      }
+
+      // Déjame dormir 0-5
+      // Buenos días 6-11
+      // Buenas tardes 12-18
+      // Buenas noches 19-23
+
+      let hora = 23.59;
+      if (hora >= 0 && hora < 6) {
+        console.log("Déjame dormir");
+      } else if (hora >= 6 && hora < 12) {
+        console.log("Buenos días");
+      } else if (hora >= 12 && hora < 19) {
+        console.log("Buenas tardes");
+      } else {
+        console.log("Buenas noches");
+      }
+
+      console.log("");
+      console.log("----- Operador ternario (condición) ? verdadero : falso");
+      // En un operador ternario solo se puede ejecutar una línea de código.
+      let eresMayor = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+      console.log(eresMayor);
+
+      console.log("");
+      console.log("----- switch - case");
+      // domingo = 0
+      // lunes = 1
+      // martes = 2
+      // miercoles = 3
+      // jueves = 4
+      // viernes = 5
+      // sabado = 6
+      let diaCase = 7;
+      switch (diaCase) {
+        case 0:
+          console.log("domingo");
+          break;
+        case 1:
+          console.log("lunes");
+          break;
+        case 2:
+          console.log("martes");
+          break;
+        case 3:
+          console.log("miercoles");
+          break;
+        case 4:
+          console.log("jueves");
+          break;
+        case 5:
+          console.log("viernes");
+          break;
+        case 6:
+          console.log("sabado");
+          break;
+        default:
+          console.log("Día de semana invalido.");
+          break;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 3 - Variables (var) vs (let)</h1>
+    </div>
+
+    <script>
+      // Variables
+      // ----------------------------------------------------------------------
+      console.log("----- Declaración de variables con var (mala practica)");
+      var hola = "Hola Mundo!";
+      console.log(hola);
+      let hello = "Hello World!";
+      console.log(hello);
+      console.log(window.hola);
+      console.log(window.hello);
+
+      console.log("");
+      console.log("----- uso de variables con var");
+      var musica = "Rock";
+      console.log("Variable música antes del bloque: ", musica);
+
+      console.log("");
+      console.log("----- var y el ambito o scope de las variables");
+      {
+        var musica = "Pop";
+        console.log("Variable música dentro bloque: ", musica);
+      }
+      console.log("Variable música al salir del bloque", musica);
+
+      console.log("");
+      console.log("----- uso de variables con let y el ambito o scope de las variables");
+      let musica2 = "Rock";
+      console.log("Variable música antes del bloque: ", musica2);
+      {
+        let musica2 = "Pop";
+        console.log("Variable música dentro bloque: ", musica2);
+      }
+      console.log("Variable música al salir del bloque", musica2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 47 - Promesas</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Promesas");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      function cuadradoPromise(value) {
+        if (typeof value !== "number")
+          return Promise.reject(`Error: El valor "${value}" que ingresó no es un número.`);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({
+              value,
+              result: value * value,
+            });
+          }, 0 | (Math.random() * 1000));
+        });
+      }
+
+      // Ejecutando la promesa
+      cuadradoPromise(1)
+        .then((obj) => {
+          console.log("Inicia promise");
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise(2);
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise(3);
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise("4");
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise(5);
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise(6);
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          return cuadradoPromise(7);
+        })
+        .then((obj) => {
+          console.log(`${obj.value}: ${obj.result} (${new Date().toLocaleTimeString()})`);
+          console.log("Fin de la promesa anidada");
+        })
+        .catch((err) => console.error(err));
+    </script>
+  </body>
+</html>

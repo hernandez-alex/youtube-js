@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 58: call, apply, bind</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- call. apply, bind");
+      console.log("//////////////////////////////////////////////////////////////////////");
+
+      console.log(`🖇️`);
+      console.log(`*-* Creamos la función saludar en el contexto global (window)`);
+      this.lugar = "Contexto global";
+
+      const saludar = function (saludo = "", aQuien = "") {
+        console.log(`${saludo} ${aQuien} desde el ${this.lugar}`);
+      };
+
+      console.log(`- Creamos un primer objeto obj1, para `);
+      const obj1 = {
+        lugar: "Contexto Objeto 1",
+      };
+      console.log(obj1);
+
+      console.log(`- Comportamiento de la función saludar si la llamamos derectamente`);
+      saludar("Hola", "Alex");
+
+      console.log(`🖇️`);
+      console.log(
+        `*-* Método call(): invoca una función asignando explícitamente el objeto this y argumentos separados por coma si se requieren.`
+      );
+      console.log(
+        `- Comportamiento de la función saludar si la llamamos usando el método call(contexto)`
+      );
+      saludar.call(obj1, "Hola", "Monica");
+
+      console.log(`🖇️`);
+      console.log(
+        `*-* Método apply(): invoca una función asignando explícitamente el objeto this y un Array de argumentos si se requieren`
+      );
+      saludar.apply(obj1);
+      saludar.apply(obj1, ["Adios", "Patricia"]);
+
+      console.log(`🖇️`);
+      console.log(
+        `*-* El método bind() crea una nueva función, que cuando es llamada, asigna a su operador this el valor entregado, con una secuencia de argumentos dados precediendo a cualquiera entregados cuando la función es llamada.`
+      );
+      const persona = {
+        nombre: "Alfredo",
+        saludar: function () {
+          console.log(`Hola ${this.nombre}`);
+        },
+      };
+
+      const otraPersona = {
+        saludarSinBind: persona.saludar,
+        saludarConBind: persona.saludar.bind(persona),
+      };
+      otraPersona.saludarSinBind();
+      otraPersona.saludarConBind();
+    </script>
+  </body>
+</html>

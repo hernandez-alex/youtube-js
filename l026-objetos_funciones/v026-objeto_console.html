@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 26 - Objeto Console</h1>
+    </div>
+
+    <script>
+      // Objeto console
+      // ----------------------------------------------------------------------
+      console.log("----- Objeto console");
+      console.log("*-* Propiedades del objeto console");
+      console.log(console);
+
+      console.log("");
+      console.log("*-* Console.err");
+      console.error("Esto es un mesaje de error de consola personalizado.");
+
+      console.log("");
+      console.log("*-* console.warn");
+      console.warn("Esto es un mensaje de warning personalizado.");
+
+      console.log("");
+      console.log("*-* console.info");
+      console.info(
+        "Esto es un mensaje de info personalizado y su notación es identica al console.log tradicionalmete usado."
+      );
+
+      let nombre = "Alex";
+      let apellido = "Hernández";
+      let edad = 48;
+      console.log(nombre);
+      console.log(apellido);
+      console.log(edad);
+      console.log(nombre, apellido, edad);
+      console.warn(`Hola mi nombre es ${nombre} ${apellido}, y tengo ${edad} años.`);
+
+      console.log("*-* Uso de comodines en el objeto console");
+      console.warn(`Hola mi nombre es %s %s, y tengo %d años.`, nombre, apellido, edad);
+      console.log("");
+
+      console.log("*-* Console.clear() limpiando la consola mediante código");
+      // console.clear();
+      console.log("");
+
+      console.log("*-* console.dir");
+      console.dir(window);
+      console.dir(document);
+      console.log("");
+
+      console.log("*-* console.group");
+      console.groupCollapsed("Los datos de Alex");
+      console.log(`Su nombre ${nombre}`);
+      console.log(`Su apellido ${apellido}`);
+      console.log(`Su edad ${edad}`);
+      console.groupEnd();
+      console.log("Hemos terminado con el grupo");
+      console.log("");
+
+      console.log("*-* console.table");
+      console.table(Object.entries(console).sort());
+      const numeros = [1, 2, 3, 4, 5];
+      const vocales = ["a", "e", "i", "o", "u"];
+      console.table(Object.entries(numeros));
+      console.table(Object.entries(vocales));
+      console.log("");
+
+      console.log("*-* console.time");
+      console.time("Tiempo de ejecución de mi código");
+      const arreglo = Array(10000);
+      for (let i = 0; i < arreglo.length; i++) {
+        arreglo[i] = i;
+      }
+      console.timeEnd("Tiempo de ejecución de mi código");
+      console.log(arreglo);
+      console.log("");
+
+      console.log("*-* console.count");
+      // Realiza un conteo de cuantas veces se ha ejecutado un determinado bloque de codigo siempre de donde se coloque el console.count
+      const recorrerArray = function () {
+        for (let i = 0; i <= 2; i++) {
+          console.log(i);
+        }
+        console.count("Veces");
+      };
+      recorrerArray();
+      recorrerArray();
+      recorrerArray();
+      console.log("");
+
+      console.log("*-* console.assert()");
+      let x = 1;
+      let y = 2;
+      let pruebaXY = "Se espera que X siempre sea mayor que Y";
+      console.assert(x > y, { x, y, pruebaXY });
+      // Cambiamos los valores de x ! y
+      x = 2;
+      y = 1;
+      console.assert(x > y, { x, y, pruebaXY });
+      // Fijate que solo se cumple cuando la condición tambien se cumple
+    </script>
+  </body>
+</html>

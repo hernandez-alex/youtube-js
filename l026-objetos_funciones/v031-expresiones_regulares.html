@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 31 - Expresiones Regulares</h1>
+    </div>
+
+    <script>
+      // Expresiones Regulares
+      // ----------------------------------------------------------------------
+      console.log("----- Expresiones Regulares");
+      // Las expresiones regulares son patrones que se utilizan para hacer coincidir combinaciones de caracteres en cadenas, usualmente se utilizan estas expresiones para validar campos.
+
+      let cadena =
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla et quos vero ipsum alias? Voluptate et aut molestiae deleniti aliquid a cupiditate nobis, tenetur suscipit! Laborum impedit eos cumque earum.";
+
+      // Primera manera de crear una expresión regular: Usando el constructor
+      let expReg = RegExp("um", "ig");
+      // Segunda manera de crear una expresión regular: Notación de barras
+      let expReg2 = /it/gi;
+
+      // Método test: Confirma la existencia de la expresion regular en la cadena
+      console.log(expReg.test(cadena));
+
+      // Método exec:
+      console.log(expReg.exec(cadena));
+      console.log(expReg2.exec(cadena));
+    </script>
+  </body>
+</html>

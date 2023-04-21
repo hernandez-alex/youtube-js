@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 43 - Ejercicios de Lógica de Programación 10/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        `*-* Ejercicio N° 25: Programa una clase llamada Pelicula.
+
+          La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+            - Todos los datos del objeto son obligatorios.
+            - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los
+              7 restantes números.
+            - Valida que el título no rebase los 100 caracteres.
+            - Valida que el director no rebase los 50 caracteres.
+            - Valida que el año de estreno sea un número entero de 4 dígitos.
+            - Valida que el país o paises sea introducidos en forma de arreglo.
+            - Valida que los géneros sean introducidos en forma de arreglo.
+            - Valida que los géneros introducidos esten dentro de los géneros
+              aceptados*.
+            - Crea un método estático que devuelva los géneros aceptados*.
+            - Valida que la calificación sea un número entre 0 y 10 pudiendo ser
+              decimal de una posición.
+            - Crea un método que devuelva toda la ficha técnica de la película.
+            - Apartir de un arreglo con la información de 3 películas genera 3
+              instancias de la clase de forma automatizada e imprime la ficha técnica
+              de cada película.
+
+          * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.`
+      );
+
+      // Mi solución **********************************************************
+      class Pelicula {
+        constructor({ id, titulo, director, estreno, pais, generos, calificacion }) {
+          // Propiedades
+          this.id = id;
+          this.titulo = titulo;
+          this.director = director;
+          this.estreno = estreno;
+          this.pais = pais;
+          this.generos = generos;
+          this.calificacion = calificacion;
+          // Validaciones
+          this.validarIMDB(id);
+          this.validarTitulo(titulo);
+          this.validarDirector(director);
+          this.validarEstreno(estreno);
+          this.validarPais(pais);
+          this.validarGeneros(generos);
+          this.validarCalificacion(calificacion);
+        }
+        // Atributo estático (getter)
+        static get listaGeneros() {
+          return [
+            "Action",
+            "Adult",
+            "Adventure",
+            "Animation",
+            "Biography",
+            "Comedy",
+            "Crime",
+            "Documentary",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "Film Noir",
+            "Game-Show",
+            "History",
+            "Horror",
+            "Musical",
+            "Music",
+            "Mystery",
+            "News",
+            "Reality-TV",
+            "Romance",
+            "Sci-Fi",
+            "Short",
+            "Sport",
+            "Talk-Show",
+            "Thriller",
+            "War",
+            "Western",
+          ];
+        }
+
+        // Método estático
+        static generosAceptados() {
+          console.info(`Los generos aceptados son: ${this.listaGeneros.join(", ")}.`);
+        }
+
+        // Métodos auxiliares de valicación
+        validarCadena(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} (${valor}) esta vacío`);
+          if (typeof valor !== "string")
+            return console.error(`${propiedad} (${valor}) ingresado, NO es una cadena de texto.`);
+          return true;
+        }
+
+        validarCadenaLong(propiedad, valor, long) {
+          if (valor.length > long) {
+            return console.error(
+              `${propiedad}  (${valor}) excede el número de caracteres permitidos de (${long})`
+            );
+          }
+          return true;
+        }
+
+        validarArreglo(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} (${valor}) esta vacío.`);
+          if (!(valor instanceof Array)) {
+            return console.warn(`El país (${valor}) no es de tipo arreglo.`);
+          }
+          return true;
+        }
+
+        // Métodos de validación principales
+        validarIMDB(id) {
+          if (this.validarCadena("IMDB id", id)) {
+            if (!/^([a-z]){2}([0-9]){7}$/.test(id)) {
+              console.error(
+                `IMDB Id "${id}", no es valido, debe tener 9 caracteres, los dos primeros letras minusculas y los siete restantes números.`
+              );
+            }
+          }
+        }
+
+        validarTitulo(titulo) {
+          if (this.validarCadena("Título", titulo)) {
+            if (this.validarCadenaLong("Titulo", titulo, 100));
+          }
+        }
+
+        validarDirector(director) {
+          if (this.validarCadena("Director", director)) {
+            if (this.validarCadenaLong("Director", director, 50));
+          }
+        }
+
+        validarEstreno(estreno) {
+          if (!/^([0-9]){4}$/.test(estreno))
+            return console.warn(`El año de Estreno (${estreno}) no es un número de 4 digitos`);
+        }
+
+        validarPais(pais) {
+          if (this.validarArreglo("Pais", pais)) {
+            for (const item of pais) {
+              if (typeof item !== "string" || item === "")
+                return console.error(`El pais (${item}) no tiene un formato valido (string)`);
+            }
+          }
+        }
+
+        validarGeneros(generos) {
+          if (this.validarArreglo("Generos", generos)) {
+            if (generos.length === 0) return console.error("Lista de generos vacia.");
+            for (const genero of generos) {
+              if (!Pelicula.listaGeneros.includes(genero))
+                return console.error(
+                  `El genero "${genero}" no se encuentra dentro de la lista de generos aceptados (${Pelicula.listaGeneros.join(
+                    ", "
+                  )}).`
+                );
+            }
+          }
+        }
+
+        validarCalificacion(calificacion = undefined) {
+          if (!calificacion)
+            return console.warn(`El campo calificación "${calificacion}" esta vacío.`);
+          if (typeof calificacion !== "number")
+            return console.error(
+              `La calificación (${typeof calificacion}) no es de tipo numérica.`
+            );
+          if ((calificacion * 10) % 1 !== 0)
+            return console.error(
+              `La calificación (${calificacion}) no puede exceder de un digito decimal.`
+            );
+          if (calificacion < 0 || calificacion > 10)
+            return console.error(
+              `Calificación (${calificacion}) no valida, debe estar comprendida entre 0 - 10.`
+            );
+        }
+
+        // Métodos
+        fichaTecnica() {
+          console.info(`
+          Ficha Técnica:
+          -------------
+          IMDB: ${this.id}
+          Título: "${this.titulo}"
+          Director: "${this.director}"
+          Estreno: ${this.estreno}
+          País(es): ${this.pais.join(", ")}
+          Género: ${this.generos.join(" - ")}
+          Calificación: ${this.calificacion}
+          `);
+        }
+      }
+
+      // --- Pruebas del ejercicio
+
+      // Consulta de generos permitidos
+      Pelicula.generosAceptados();
+
+      // Instacia de la clase película
+      const peli = new Pelicula({
+        id: "tt1234567",
+        titulo: "Hola Alex",
+        director: "Alex Hernández",
+        estreno: 1984,
+        pais: ["Venezuela", "Colombia", "Argentina"],
+        generos: ["Sport", "War"],
+        calificacion: 7.2,
+      });
+
+      // Llamado al metodo ficha técnica de la clase película.
+      peli.fichaTecnica();
+
+      // Mis peliculas
+      const misPelis = [
+        {
+          id: "tt1111111",
+          titulo: "Titanium",
+          director: "Alex Hernández",
+          estreno: 1994,
+          pais: ["Venezuela", "Colombia", "Argentina"],
+          generos: ["Sport", "War"],
+          calificacion: 8.1,
+        },
+        {
+          id: "tt2222222",
+          titulo: "Iron Woman",
+          director: "Monica Marquez",
+          estreno: 1997,
+          pais: ["Venezuela"],
+          generos: ["Action", "Animation"],
+          calificacion: 8.3,
+        },
+        {
+          id: "tt3333333",
+          titulo: "Women on fire",
+          director: "Carolina Rodriguez",
+          estreno: 1974,
+          pais: ["Colombia", "Mexico"],
+          generos: ["Action", "Adult"],
+          calificacion: 5.7,
+        },
+      ];
+
+      misPelis.forEach((peli) => new Pelicula(peli).fichaTecnica());
+    </script>
+  </body>
+</html>

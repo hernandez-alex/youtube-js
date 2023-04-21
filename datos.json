@@ -1,0 +1,15 @@
+{
+  "cadena": "Alex",
+  "numero": 35,
+  "booleano": true,
+  "arreglo": [
+    "correr",
+    "programar",
+    "cocinar"
+  ],
+  "objeto": {
+    "twitter": "@hernandezaw",
+    "correo": "hernandezaw@gmail.com"
+  },
+  "nulo": null
+}

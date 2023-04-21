@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 36 - Ejercicios de Lógica de Programación 3/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 5:--------------------------------------------------");
+      console.log(
+        `- Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH"`
+      );
+
+      // Mi solución **********************************************************
+      const invertirCadena = (cadena = "") =>
+        !cadena
+          ? console.warn("Ha omitido la cadena de caracteres")
+          : typeof cadena != "string"
+          ? console.error("El tipo de datos no es una cadena")
+          : console.info(cadena, " <---> ", cadena.split("").reverse().join(""));
+
+      // --- Pruebas del ejercicio
+      invertirCadena("alex");
+      invertirCadena("Monica Marquez");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 6:--------------------------------------------------");
+      console.log(
+        `- Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2`
+      );
+
+      // Mi solución **********************************************************
+      const contarRepeticionDePalabra = (texto = "", palabra = "") => {
+        // Validamos los datos
+        if (!texto) return console.warn("Ha Omitido el texto donde se buscara la palabra");
+        if (!palabra) return console.warn("Ha omitido al palabra a buscar");
+        if (typeof texto != "string") return console.error("El texto no es un string");
+        if (typeof palabra != "string") return console.error("La palabra no es un string");
+        // Calculamos la cantidad de palabras usando expresiones regulares
+        let expReg = new RegExp(palabra, "ig");
+        let cantidadDePalabras = texto.match(expReg) === null ? 0 : texto.match(expReg).length;
+        console.log(`(${cantidadDePalabras}) "${palabra}" en "${texto}"`);
+      };
+
+      // Otra solución ********************************************************
+      const contarRepeticionDePalabra2 = (texto = "", palabra = "") => {
+        if (!texto) return console.warn("Ha omitido el texto donde se buscará la palabra");
+        if (!palabra) return console.warn("Ha omitido la palabra a buscar");
+        if (typeof texto !== "string") return console.error("El texto no es un string");
+        if (typeof palabra !== "string") return console.error("La palabra no es un string");
+
+        let i = 0;
+        let contador = 0;
+        while (i !== -1) {
+          i = texto.indexOf(palabra, i);
+          if (i !== -1) {
+            i++;
+            contador++;
+          }
+        }
+        return console.log(`*** (${contador}) "${palabra}" en "${texto}"`);
+      };
+
+      // --- Pruebas del ejercicio
+      console.log("*-* Con mi codigo ------------------------------------------");
+      contarRepeticionDePalabra();
+      contarRepeticionDePalabra("En la pata de la mesa de la silla de la casa");
+      contarRepeticionDePalabra(321654, "la");
+      contarRepeticionDePalabra("En la pata de la mesa de la silla de la casa", 2334);
+      contarRepeticionDePalabra("En la pata de la mesa de la silla de la casa", "la");
+      contarRepeticionDePalabra("En la pata de la mesa de la silla de la casa", "de");
+      contarRepeticionDePalabra("En la pata de la mesa de la silla de la casa", "por");
+      contarRepeticionDePalabra("hola mundo adios mundo", "mundo");
+
+      console.log("*-* Con otro codigo ----------------------------------------");
+      contarRepeticionDePalabra2();
+      contarRepeticionDePalabra2("En la pata de la mesa de la silla de la casa");
+      contarRepeticionDePalabra2(321654, "la");
+      contarRepeticionDePalabra2("En la pata de la mesa de la silla de la casa", 2334);
+      contarRepeticionDePalabra2("En la pata de la mesa de la silla de la casa", "la");
+      contarRepeticionDePalabra2("En la pata de la mesa de la silla de la casa", "de");
+      contarRepeticionDePalabra2("En la pata de la mesa de la silla de la casa", "por");
+      contarRepeticionDePalabra2("hola mundo adios mundo", "mundo");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 7:--------------------------------------------------");
+      console.log(
+        `- Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true`
+      );
+
+      // Mi solución **********************************************************
+      const palindromo = (palabra = "") =>
+        !palabra
+          ? console.warn("Ha omitido la palabra")
+          : typeof palabra != "string"
+          ? console.warn("La palabra no es un string")
+          : palabra.toLowerCase() === palabra.toLowerCase().split("").reverse().join("")
+          ? console.info(`"${palabra}" SI es un palindromo`)
+          : console.info(`"${palabra}" NO es un palindromo`);
+
+      // --- Pruebas del ejercicio
+      palindromo();
+      palindromo(123);
+      palindromo("salar");
+      palindromo("Salas");
+      palindromo("Ana");
+      palindromo("Cana");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 8:--------------------------------------------------");
+      console.log(
+        `- Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5`
+      );
+
+      // Mi solución **********************************************************
+      const eliminarPatron = (texto, patron) =>
+        !texto
+          ? console.warn("Ha omitido el texto")
+          : !patron
+          ? console.warn("Ha omitdo el patrón")
+          : typeof texto != "string"
+          ? console.error("El texto debe ser un string")
+          : typeof patron != "string"
+          ? console.error("El patrón debe ser un string")
+          : console.info(
+              `Texto original "${texto}" patrón a eliminar "${patron}" resultado: ${texto.replaceAll(
+                patron,
+                ""
+              )}`
+            );
+
+      // Otra solución ********************************************************
+      // Esta segunda forma al usar una expresion regular puede seleccionar mayusculas y minusculas
+      const eliminarPatron2 = (texto, patron) =>
+        !texto
+          ? console.warn("Ha omitido el texto")
+          : !patron
+          ? console.warn("Ha omitdo el patrón")
+          : typeof texto != "string"
+          ? console.error("El texto debe ser un string")
+          : typeof patron != "string"
+          ? console.error("El patrón debe ser un string")
+          : console.info(
+              `Texto original "${texto}" patrón a eliminar "${patron}" resultado: ${texto.replace(
+                new RegExp(patron, "ig"),
+                ""
+              )}`
+            );
+
+      // --- Pruebas del ejercicio
+      console.log("*-* Con mi codigo ------------------------------------------");
+      eliminarPatron();
+      eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5");
+      eliminarPatron(23434, "xyz");
+      eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", 678);
+      eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+      eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xy");
+      console.log("*-* Con otro codigo ----------------------------------------");
+      eliminarPatron2();
+      eliminarPatron2("xyz1, xyz2, xyz3, xyz4 y xyz5");
+      eliminarPatron2(23434, "xyz");
+      eliminarPatron2("xyz1, xyz2, xyz3, xyz4 y xyz5", 678);
+      eliminarPatron2("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+      eliminarPatron2("xyz1, xyz2, xyz3, xyz4 y xyz5", "xy");
+    </script>
+  </body>
+</html>

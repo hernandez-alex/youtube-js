@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 11 - Arreglos (arrays)</h1>
+    </div>
+
+    <script>
+      // Arreglos
+      // ----------------------------------------------------------------------
+      console.log("----- Arreglos");
+
+      arr1 = [];
+      arr2 = [1, true, "Hola", ["A", "B", "C"]];
+      console.log(arr1);
+      console.log(arr2);
+      console.log(arr2[2]);
+      console.log(arr2[3][2]);
+
+      console.log("*-* Otra forma poco usual de declarar un arreglo");
+      const arr3 = Array.of("X", "Y", "Z", 9, 8, 7);
+      console.log(arr3);
+
+      console.log("*-* Crear un arreglo e inicializarlo con el mismo valor");
+      const arr4 = Array(15).fill("N");
+      console.log(arr4);
+
+      console.log("*-* Otras formas de crear arreglos validas pero antiguas y en desuso");
+      const arr5 = new Array();
+      console.log(arr5);
+      const arr6 = new Array(1, 2, 3, true, false);
+      console.log(arr6);
+
+      const colorArray = ["Rojo", "Verde", "Azul"];
+      console.log(colorArray);
+
+      console.log("*-* Algunos metodos de los arreglos");
+
+      console.log("1.- Metodo Push: para agregar elementos a los arreglos");
+      colorArray.push("Negro");
+      console.log(colorArray);
+
+      console.log("2.- Metodo Pop: elimina el último elemento del arreglo");
+      colorArray.pop();
+      console.log(colorArray);
+
+      console.log("3.- Metodo forEach: Se usa para iterar en el arreglo");
+      colorArray.forEach(function (el, index) {
+        console.log(`<li id="${index}">${el}</li>`);
+      });
+    </script>
+  </body>
+</html>

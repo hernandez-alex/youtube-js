@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 35 - Ejercicios de Lógica de Programación 2/10</h1>
+    </div>
+
+    <script>
+      // Ejercicios de Lógica de Programación
+      // ----------------------------------------------------------------------
+      console.log("----- Ejercicios de Lógica de Programación");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 1:--------------------------------------------------");
+      console.log(
+        `- Programa una fución que cuente el número de caracteres de una cadena de texto, por ejemplo miFuncion("Hola mundo") devolverá 10`
+      );
+      // Mi solución **********************************************************
+      // const contarCaracteres = function (cadena) {
+      //   if (typeof cadena != "string") {
+      //     console.warn(
+      //       `El tipo de dato ingresado (${typeof cadena}) no es un cadena de texto valida!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   console.log(`El texto: "${cadena}" contiene ${cadena.length} caracteres.`);
+      //   console.log("");
+      // };
+
+      // Otra solución ********************************************************
+      const contarCaracteres = (cadena = "") =>
+        !cadena
+          ? console.info("Debe ingresar una cadena de caracteres")
+          : typeof cadena != "string"
+          ? console.error("Usted no ha ingresado una cadena de texto")
+          : console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres.`);
+      // --- Pruebas del ejercicio
+      contarCaracteres("Hola mundo");
+      contarCaracteres([2, 3, 4]);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 2:--------------------------------------------------");
+      console.log(
+        `- Programa una función que te devuelva el texto recortado según el número de caracteres indicados, por ejemplo miFuncion("Hola mundo", 4) devolverá Hola`
+      );
+      // Mi solución **********************************************************
+      // const truncarCadena = function (cadena, caracteres) {
+      //   if (typeof cadena != "string") {
+      //     console.warn(
+      //       `El tipo de dato ingresado (${typeof cadena}) no es un cadena de texto valida!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   if (typeof caracteres != "number" || caracteres <= 0) {
+      //     console.warn(
+      //       `El tipo de dato ingresado en caracteres (${typeof caracteres}) no es un número valido!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   console.log(`Los primeros ${caracteres} de "${cadena}" son: "${cadena.slice(0, 4)}"`);
+      //   console.log("");
+      // };
+
+      // Otra solución ********************************************************
+      const truncarCadena = (cadena = "", caracteres = undefined) =>
+        !cadena
+          ? console.warn("Debe ingresar una cadena de caracteres")
+          : typeof cadena != "string"
+          ? console.warn("Usted no ha ingresado una cadena de texto")
+          : caracteres === undefined
+          ? console.warn("Olvido definir el número de caracteres")
+          : typeof caracteres != "number"
+          ? console.error("Ingreso una cantidad de caracteres no númerica")
+          : caracteres - Math.floor(caracteres) > 0
+          ? console.error("El numero de caracteres debe ser entero")
+          : caracteres < 0
+          ? console.error("El número de caracteres debe ser positivo")
+          : console.info(
+              `Los primeros ${caracteres} de "${cadena}" son: "${cadena.slice(0, caracteres)}"`
+            );
+      // --- Pruebas del ejercicio
+      truncarCadena();
+      truncarCadena(1254, 3);
+      truncarCadena("Hola mundo");
+      truncarCadena("Hola mundo", "2");
+      truncarCadena("Hola mundo", 4.7);
+      truncarCadena("Hola mundo", -4);
+      truncarCadena("Hola mundo", 4);
+
+      console.log("");
+      console.log("*-* Ejercicio N° 3:--------------------------------------------------");
+      console.log(
+        `- Programa una función que dado un String te devuelva un Array, de textos separados por cierto carater por ejemplo miFuncion("Hola que tal") devolverá ["Hola", "que", "tal"]`
+      );
+      // Mi solución **********************************************************
+      // const cadenaArreglo = function (cadena) {
+      //   if (typeof cadena != "string") {
+      //     console.warn(
+      //       `El tipo de dato ingresado (${typeof cadena}), no es una cadena de texto valida!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   console.log(cadena.split(" "));
+      //   console.log("");
+      // };
+
+      // Otra solución ********************************************************
+      const cadenaAArreglo = (cadena = "", separador = undefined) =>
+        !cadena
+          ? console.warn("Ha omitido la cadena de caracteres")
+          : typeof cadena != "string"
+          ? console.error("El tipo de datos no corresponde a una cadena de caracteres")
+          : !separador
+          ? console.warn("Ha omitido el separador de la cadena de caracteres")
+          : console.log("Arreglo", cadena.split(separador));
+      // --- Pruebas del ejercicio
+      cadenaAArreglo();
+      cadenaAArreglo(125);
+      cadenaAArreglo("Hola mundo bonito");
+      cadenaAArreglo("Hola mundo bonito", " ");
+
+      console.log("");
+      console.log("*-* Ejercicio N° 4:--------------------------------------------------");
+      console.log(
+        `- Programa una  función que repita un texto X veces, por ejemplo miFuncion("Hola mundo", 3) devolverá Hola mundo Hola mundo Hola mundo`
+      );
+      // Mi solución **********************************************************
+      // const repetirCadena = function (cadena, veces) {
+      //   if (typeof cadena != "string") {
+      //     console.warn(
+      //       `El tipo de dato ingresado (${typeof cadena}) no es un cadena de texto valida!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   if (typeof veces != "number" || veces <= 0) {
+      //     console.warn(
+      //       `El tipo de dato ingresado en veces (${typeof veces}) no es un número valido!`
+      //     );
+      //     console.log("");
+      //     return;
+      //   }
+      //   let cadenaMultiple = "";
+      //   for (let i = 0; i < veces; i++) {
+      //     cadenaMultiple += cadena + " ";
+      //   }
+      //   console.log(cadenaMultiple);
+      // };
+
+      // Otra solución ********************************************************
+      const repetirCadena = (cadena = "", veces = undefined) => {
+        if (!cadena) return console.warn("Ha omitido la cadena de caracteres");
+        if (typeof cadena != "string") return console.error("El tipo de datos no es a una cadena");
+        if (!veces) return console.warn("Ha omitido el número de repeticiones de la cadena");
+        if (!isFinite(veces)) return console.error("Las veces deben ser un número");
+        if (veces - Math.floor(veces) > 0) return console.error("El número debe ser entero");
+        if (veces < 0) return console.error("El número de veces debe ser positivo");
+        for (let i = 1; i <= veces; i++) {
+          console.log(cadena, i);
+        }
+      };
+      // --- Pruebas del ejercicio
+      repetirCadena();
+      repetirCadena(123);
+      repetirCadena("Hola mundo");
+      repetirCadena("Hola mundo", "as");
+      repetirCadena("Hola mundo", 2.2);
+      repetirCadena("Hola mundo", -3);
+      repetirCadena("Hola mundo", 3);
+    </script>
+  </body>
+</html>

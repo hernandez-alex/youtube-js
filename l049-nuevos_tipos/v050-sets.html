@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 50: Sets</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Sets");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(
+        "Un set es un objeto parecido a un Array pero no lo es, tiene algunas caracteristeicas similares pero otras distintas. Su cualidad principal es que almacena valores primitivos únicos, no se pueden repetir..."
+      );
+
+      console.log(`🖇️`);
+      console.log("*-* Creando un objeto set");
+      const set = new Set([1, 2, 3, 3, 4, 5, true, false, true, {}, {}, "hola", "Hola", "hola"]);
+      console.log(set);
+
+      console.log(`🖇️`);
+      console.log("*-* Creación de un objeto set vacio y agregando valores con el método add");
+      const set2 = new Set();
+      set2.add(1);
+      set2.add(2);
+      set2.add(3);
+      set2.add(3);
+      set2.add(true);
+      set2.add(false);
+      set2.add(true);
+      set2.add({});
+      console.log(set2);
+
+      console.log(`🖇️`);
+      console.log(
+        "*-* Números de elementos de un set: propiedad size (es como el length de un array)"
+      );
+      console.log("set.size :", set.size);
+      console.log("set2.size :", set2.size);
+
+      console.log(`🖇️`);
+      console.log("*-* Recorrido de los elementos de un set (con for of por ejemplo)");
+      for (const item of set) {
+        console.log(item);
+      }
+      console.log("*-* Recorriendo con un forEach (otro ejemplo)");
+      set2.forEach((el) => console.log(el));
+
+      console.log(`🖇️`);
+      console.log("*-* Acceder a los elementos de un arreglo");
+      console.log("- Usando Array.from");
+      console.log("Array.from(set)[0] :", Array.from(set)[0]);
+      console.log("Array.from(set2)[3] :", Array.from(set2)[3]);
+      console.log("- Usando destructiring");
+      console.log("[...set][0] :", [...set][0]);
+      console.log("[...set2][3] :", [...set2][3]);
+
+      console.log(`🖇️`);
+      console.log("*-* Borrado de elemento de un set con el método delete");
+      console.log("Antes de eliminar el 3: ", set);
+      set.delete(3);
+      console.log("Luego de eliminar el 3: ", set);
+
+      console.log(`🖇️`);
+      console.log("*-* Comprobar si un elemento existe dentro de un set, método has()");
+      console.log("set.has(1):", set.has(1));
+      console.log("set.has(2):", set.has(2));
+      console.log("set.has(3):", set.has(3));
+      console.log("set.has(4):", set.has(4));
+
+      console.log(`🖇️`);
+      console.log("*-* Eliminar todos los elementos de un set, método clear()");
+      console.log("set antes del clear() :", set);
+      set.clear();
+      console.log("set despues del clear() :", set);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 18 - Destructuración (destructuring)</h1>
+    </div>
+
+    <script>
+      // Destructing
+      // ----------------------------------------------------------------------
+      // Destructuración o separación de objetos en variables indivuduales...
+      console.log("----- Destructuring (destructuración)");
+      console.log("");
+      console.log("*-* Ejemplo 1: destructuring con arrays []");
+      arrDestruct = [1, 2, 3];
+      [primerNum, segundoNum, tercerNum] = arrDestruct;
+      console.log(primerNum, segundoNum, tercerNum);
+      console.log("suma de numeros destructurados: ", primerNum + segundoNum + tercerNum);
+
+      console.log("");
+      console.log("*-* Ejemplo 2: destructuring con objetos {}");
+      const miObjeto = {
+        myName: "Alex Williams",
+        myLastName: "Hernández Bracho",
+      };
+      // Muy importante para que la destructuración funcione en objetos la variable debe tener exactamente el mismo nombre que tiene en el objeto del cual procede.
+      const { myName, myLastName } = miObjeto;
+      console.log(myName, myLastName);
+      // Se deseo cambiar el nombre de la variable al destructurar objetos puedo hacerlo utilizando los dos puntos :
+      const { myName: nombres, myLastName: apellidos } = miObjeto;
+      console.log(nombres, apellidos);
+    </script>
+  </body>
+</html>

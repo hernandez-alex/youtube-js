@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 8 - Booleans</h1>
+    </div>
+
+    <script>
+      // Valores booleanos
+      // ----------------------------------------------------------------------
+      console.log("----- Valores booleanos");
+
+      let verdadero = true;
+      let falso = false;
+      let v = Boolean(true);
+      let f = Boolean(false);
+      console.log(verdadero, falso, v, f);
+      console.log(typeof verdadero, typeof falso);
+
+      console.log("");
+      console.log("----- Truthy values");
+      console.log("1. true: ", Boolean(true));
+      console.log("2. {}: ", Boolean({}));
+      console.log("3. []: ", Boolean([]));
+      console.log("4. 25: ", Boolean(25));
+      console.log("5. -25: ", Boolean(-25));
+      console.log("6. 12n", Boolean(12n));
+      console.log(`7. "0": `, Boolean("0"));
+      console.log(`8. "false": `, Boolean("false"));
+      console.log("9. new Date(): ", Boolean(new Date()));
+      console.log("10. Infinity: ", Boolean(Infinity));
+      console.log("11. -Infinity: ", Boolean(-Infinity));
+
+      console.log("");
+      console.log("----- Falsy values");
+      console.log(`1. false: `, Boolean(false));
+      console.log(`2. 0: `, Boolean(0));
+      console.log(`3. -0: `, Boolean(-0));
+      console.log(`4. 0n: `, Boolean(0n));
+      console.log(`5. "": `, Boolean(""));
+      console.log(`6. '': `, Boolean(""));
+      console.log("8. ``: ", Boolean(0n));
+      console.log("9. null: ", Boolean(null));
+      console.log("10. undefined: ", Boolean(undefined));
+      console.log("11. NaN: ", Boolean(NaN));
+    </script>
+  </body>
+</html>

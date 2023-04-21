@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 13 - Tipos de Operadores</h1>
+    </div>
+
+    <script>
+      // Operadores
+      // ----------------------------------------------------------------------
+      console.log("----- Tipos de operadores");
+      console.log("*-* Operadores aritméticos + - * / % ()");
+
+      // Operadores aritméticos + - * / % ()
+      console.log("*-* Suma, resta, multiplicación y división");
+      let opeAritmeticos = 2 + 9 * 2 - (9 / 3 + 1);
+      console.log("2 + 9 * 2 - (9 / 3 + 1) = ", 2 + 9 * 2 - (9 / 3 + 1));
+
+      // Modulo
+      console.log("*-* Modulo (devuelve el residuo de una división)");
+      console.log("5 % 2 = ", 5 % 2);
+      console.log("4 % 2 = ", 4 % 2);
+
+      // Operadores Relacionales
+      console.log("");
+      console.log("*-* Operadores relacionales: < , > , <= , >= , == , === , != , !==");
+      console.log("7 < 8 :", 7 < 8);
+      console.log("7 > 8 :", 7 > 8);
+      console.log("7 >= 8 :", 7 >= 8);
+      console.log("8 == 8 :", 8 == 8);
+      console.log("8 == '8' :", "8" == 8);
+      console.log("8 === '8' :", "8" === 8);
+      console.log("0 == false :", 0 == false);
+      console.log("0 == true :", 0 == true);
+
+      // Operadores de Incremento
+      console.log("");
+      console.log("*-* Operadores de Incremento: += , -= , *= , /=");
+      let i = 0;
+      console.log("let i = 0");
+      console.log("i += 1 :", (i += 1));
+      console.log("i *= 4 :", (i *= 4));
+      console.log("i /= 2 :", (i /= 2));
+      console.log("i -= 1 :", (i /= 2));
+
+      // Operadores Unarios (Incremento o decremento por unidad)
+      console.log("");
+      console.log("*-* Operadores Unarios");
+      console.log("i++ :", i++);
+      console.log("i++ :", i++);
+      console.log("++i :", ++i);
+
+      console.log("--i :", --i);
+      console.log("i-- :", i--);
+      console.log("i :", i);
+
+      // Operadores Lógicos
+      console.log("");
+      console.log("*-* Operadores Lógicos: ! : NOT , && : AND , || : OR");
+      console.log("true :", true);
+      console.log("!true :", !true);
+      console.log("false :", false);
+      console.log("!false :", !false);
+      console.log("true && true :", true && true);
+      console.log("true && false :", true && false);
+      console.log("fasle && false :", false && false);
+      console.log("true || true :", true || true);
+      console.log("true || false :", true || false);
+      console.log("false || false :", false || false);
+    </script>
+  </body>
+</html>

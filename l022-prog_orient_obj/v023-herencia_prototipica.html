@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 23 - Herencia Prototípica</h1>
+    </div>
+
+    <script>
+      console.log("*-* Esto viene del video anterior que se necisitaba para este...");
+      function Animal(nombre, genero) {
+        // Atributos
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+      // Metodos asignados al prototipo
+      Animal.prototype.saludar = function () {
+        console.log(`Hola me llamo ${this.nombre}`);
+      };
+      Animal.prototype.sonar = function () {
+        console.log("Hago sonidos porque estoy vivo");
+      };
+
+      // Instancia Snoopy
+      const snoopy = new Animal("Snoopy", "masculino");
+      console.log(snoopy);
+      console.log(snoopy.nombre, snoopy.genero);
+      snoopy.saludar();
+      snoopy.sonar();
+
+      // Instancia LolaBunny
+      const lolaBunny = new Animal("Lola Bunny", "femenino");
+      console.log(lolaBunny);
+      console.log(lolaBunny.nombre, lolaBunny.genero);
+      lolaBunny.saludar();
+      lolaBunny.sonar();
+
+      // Herencia Prototípica
+      // ----------------------------------------------------------------------
+      console.log("");
+      console.log("----- Herencia Prototípica");
+      // Ejemplo de Herencia Prototíca
+      // 1. Creamos una nueva función prototipica llamada Perro
+      function Perro(nombre, genero, tamanio) {
+        // Asignamos su clase padre que es Animal
+        this.super = Animal;
+        // Asignamos las propiedades de la clase padre
+        this.super(nombre, genero);
+        // Asignamos las propiedades exclusivos de la nueva clase Perro
+        this.tamanio = tamanio;
+      }
+
+      // Perro está heredando las propiedades y metodos de la clase de Animal
+      Perro.prototype = new Animal();
+      Perro.prototype.constructor = Perro;
+
+      // Podemos sobreescribir metodos del prototipo padre en el hijo si queremos
+      Perro.prototype.sonar = function () {
+        console.log("Ladro por que soy un perro");
+      };
+
+      // Tambien podemos crear nuevos metodos para la nueva clase Perro
+      Perro.prototype.ladrar = function () {
+        console.log("Guau Guau Guau!!!");
+      };
+
+      // Creamos una istancia de la nuevo prototipo
+      const scooby = new Perro("Scooby Doo", "Macho", "Grande");
+      console.log(scooby);
+      scooby.saludar();
+      scooby.sonar();
+      scooby.ladrar();
+    </script>
+  </body>
+</html>

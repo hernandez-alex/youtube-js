@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 25 - Métodos Estáticos (getters/setters)</h1>
+    </div>
+
+    <script>
+      // Clases y Herencia
+      // ----------------------------------------------------------------------
+      console.log("----- Métodos Estáticos, getters & setters");
+      class Animal {
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+        sonar() {
+          console.log("Hago sonidos porque etoy vivo.");
+        }
+        saludar() {
+          console.log(`Hola me llamo ${this.nombre}`);
+        }
+      }
+
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          super(nombre, genero);
+          this.tamanio = tamanio;
+          // Nota que esta variable la inicializo como null y no la declaro en la parte superior de la clase
+          this.raza = null;
+        }
+        sonar() {
+          console.log("Soy un perro y mi sonido es un ladrido.");
+        }
+        ladrar() {
+          console.log("Guau Guau...");
+        }
+        // Métodos estáticos
+        // Es aquel que se puede ejecutar sin necesidad de instanciar la clase
+        static queEres() {
+          console.log(
+            "Los perros somos animales mamiferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre."
+          );
+        }
+        // Los métodos getters y setters son métodos especiales que nos permiten establecer y obtener valores de los atributos de nuestra clase
+
+        // ****** OJO JavaScript convierte estos metodos en atributos Jajaja, no se por que ******
+        // Ejemplo de método getter (se antepone la palabra get y por nomenclatura se suele colocar get tambian al principio del nombre del método para que sea de facil visiualización)
+        get getRaza() {
+          return this.raza;
+        }
+        // Ejemplo de método setter (se antepone la palabre ser y por nomenclatura se suele colocar set tambien al principio del nombre del método para que sea de facil visualización, además este método suele llevar parametros.)
+        set setRaza(raza) {
+          this.raza = raza;
+        }
+      }
+
+      console.log("");
+      const scooby = new Perro("Scooby Doo", "Macho", "grande");
+      console.log(scooby);
+
+      // llamado de un metodo estático de la clase perro
+      console.log("*-* Métodos estáticos");
+      Perro.queEres();
+
+      console.log("");
+      console.log("*-* llamando a un getter");
+      console.log(scooby.getRaza);
+
+      console.log("");
+      console.log("*-* llamado a un setter");
+      scooby.setRaza = "Grán Danés";
+      console.log(scooby.getRaza);
+    </script>
+  </body>
+</html>

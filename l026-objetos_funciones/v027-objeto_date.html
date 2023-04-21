@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 27 - Objeto Date</h1>
+    </div>
+
+    <script>
+      // Objeto Date
+      // ----------------------------------------------------------------------
+      console.log("----- Objeto Date");
+      console.log(Date());
+      console.log("");
+
+      console.log("*-* Métodos del objetod Date()");
+      let fecha = new Date();
+
+      // Día del mes
+      console.log("fecha ->", fecha);
+      console.log("1.- fecha.getDate() ->", fecha.getDate());
+
+      // Día de la semana D L M M J V S : 0 1 2 3 4 5 6
+      console.log("2.- fecha.getDay() ->", fecha.getDay());
+
+      // Mes de año E F M A M J J A S O N D : 0 1 2 3 4 5 6 7 8 9 10 11
+      console.log("3.- fecha.getMonth() ->", fecha.getMonth());
+
+      // Años transcurrido desde 1920, no usar no práctico
+      console.log("4.- fecha.getYear() ->", fecha.getYear());
+
+      // Año actual
+      console.log("5.- fecha.getFullYear() ->", fecha.getFullYear());
+
+      // Hora
+      console.log("6.- fecha.getHours() ->", fecha.getHours());
+
+      // Minutos
+      console.log("7.- fecha.getMinutes() ->", fecha.getMinutes());
+
+      // Segundos
+      console.log("8.- fecha.getSeconds() ->", fecha.getSeconds());
+
+      // Milisegundos
+      console.log("9.- fecha.getMilliseconds() ->", fecha.getMilliseconds());
+
+      // Otras maneras de obtener la fecha
+      console.log("10.- fecha.toDateString() ->", fecha.toDateString());
+      console.log("11.- fecha.toLocaleString() ->", fecha.toLocaleString());
+      console.log("12.- fecha.toLocaleDateString() ->", fecha.toLocaleDateString());
+      console.log("13.- fecha.toLocaleTimeString() ->", fecha.toLocaleTimeString());
+      console.log("14.- fecha.getTimezoneOffset() ->", fecha.getTimezoneOffset());
+
+      console.log("");
+      console.log("*-* new Date() usando parámetros para definir la fecha...");
+      let miNacimiento = new Date(1974, 2, 10, 17, 30);
+      console.log("miNacimiento ->", miNacimiento);
+    </script>
+  </body>
+</html>

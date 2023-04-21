@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 46 - Callbacks</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Callbacks");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log("Inicio del script", new Date().toLocaleTimeString());
+      function cuadradoCallback(value, callback) {
+        setTimeout(() => {
+          callback(value, value * value);
+        }, 0 | (Math.random() * 1000));
+      }
+
+      // Llamado a la función callback una vez
+      // cuadradoCallback(10, (value, result) => {
+      //   console.log("Inicia callback");
+      //   console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+      // });
+
+      // callback hell : Llamado a la función callback varias veces anidada
+      cuadradoCallback(1, (value, result) => {
+        console.log("Inicia callback");
+        console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+        cuadradoCallback(2, (value, result) => {
+          console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+          cuadradoCallback(3, (value, result) => {
+            console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+            cuadradoCallback(4, (value, result) => {
+              console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+              cuadradoCallback(5, (value, result) => {
+                console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+                cuadradoCallback(6, (value, result) => {
+                  console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+                  cuadradoCallback(7, (value, result) => {
+                    console.log(`${value}: ${result} (${new Date().toLocaleTimeString()})`);
+                    console.log("Fin del callback");
+                    console.log("Callback Hell 🤘😈");
+                    console.log("http://callbackhell.com/");
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

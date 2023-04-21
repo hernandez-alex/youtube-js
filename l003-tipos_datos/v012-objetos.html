@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 12 - Objetos (Objects)</h1>
+    </div>
+
+    <script>
+      // Objetos
+      // ----------------------------------------------------------------------
+      console.log("----- Objetos");
+
+      console.log("*-* Formase de declarar un objeto");
+      const objA = {};
+      const objB = new Object(); // Forma antigua valida pero en desuso
+      console.log(objA);
+      console.log(objB);
+
+      console.log("*-* Ejemplo de objeto");
+      const objAlex = {
+        // Variables, Atributos o Propiedades
+        nombre: "Alex",
+        apellido: "Hernández",
+        edad: 48,
+        pasatiempos: ["Estudiar", "Leer", "Ver TV"],
+        contacto: {
+          email: "hernandezaw@gmail.com",
+          twitter: "hernandezaw",
+          telefono: "0424-6217033",
+        },
+        // Métodos o funciones
+        saluda: function () {
+          console.log(`Hola ;)`);
+        },
+        miNombre: function () {
+          console.log(`Hola me llamo ${this.nombre} ${this.apellido} :)`);
+        },
+      };
+      console.log(objAlex);
+
+      console.log("*-* Acceder a las propiedades y métodos de un objeto");
+      // Se puede acceder con a ellas usando corchetes pero lo más usual es acceder por medio de la nutación punto...
+
+      console.log("*-* Atributos - Variables - propiedades");
+      console.log(objAlex["nombre"]);
+      console.log(objAlex.apellido);
+      console.log(objAlex.pasatiempos);
+      console.log(objAlex.pasatiempos[0]);
+      console.log(objAlex.contacto);
+      console.log(objAlex.contacto.email);
+
+      console.log("*-* Métodos - Funciones");
+      objAlex.saluda();
+      objAlex.miNombre();
+
+      console.log("*-* Ver todas las Keys (LLAVES de un objeto)");
+      console.log(Object.keys(objAlex));
+
+      console.log("*-* Lista todas los valores (VALUES de un objeto)");
+      console.log(Object.values(objAlex));
+
+      console.log("*-* Conocer si un objeto tiene determinada propiedad o método");
+      console.log(objAlex.hasOwnProperty("nombre"));
+      console.log(objAlex.hasOwnProperty("miNombre"));
+      console.log(objAlex.hasOwnProperty("nacimiento"));
+    </script>
+  </body>
+</html>

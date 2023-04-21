@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 32 - Funciones Anónimas Autoejecutables</h1>
+    </div>
+
+    <script>
+      // Funciones Anónimas Autoejecutables
+      // ----------------------------------------------------------------------
+      console.log("----- Funciones Anónimas Autoejecutables");
+      (function (nombre) {
+        console.log(`Hola ${nombre}`);
+      })("Alex");
+
+      (function (d, w, c) {
+        c.log("Este es un console.log");
+        c.log(w);
+        c.log(d);
+      })(document, window, console);
+      console.log("");
+
+      console.log("--- Formas de escribir funciones anónimas autoejecutables");
+      console.log("*-* Forma clásica");
+      (function () {
+        console.log("(function(){codigo})()");
+      })();
+      console.log("");
+
+      console.log("*-* Crockford (Javascript the good parts)");
+      (function () {
+        console.log("((function(){codigo})())");
+      })();
+      console.log("");
+
+      console.log("*-* Unaria") +
+        +(function () {
+          console.log("+function(){codigo}()");
+        })();
+      console.log("");
+
+      console.log("*-* Facebook") +
+        !(function () {
+          console.log("!function(){codigo}()");
+        })();
+    </script>
+  </body>
+</html>

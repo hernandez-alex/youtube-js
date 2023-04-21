@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos JavaScript</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Video 55: Proxies</h1>
+      <!-- <h2></h2> -->
+    </div>
+
+    <script>
+      console.log("----- Proxies");
+      console.log("//////////////////////////////////////////////////////////////////////");
+      console.log(`🖇️`);
+      console.log(
+        "El objeto Proxy permite crear un intermediario para otro objeto, el cual puede interceptar y redefinir operaciones fundamentales para dicho objeto."
+      );
+      console.log("- Creamos un objeto (persona)");
+      const persona = {
+        nombre: "",
+        apellido: "",
+        edad: 0,
+      };
+
+      console.log("- Creamos el manejador del objeto");
+      const manejador = {
+        // con set asignamos las propiedades
+        set(obj, prop, valor) {
+          // Estas son las validaciones
+
+          // Validación especial que impide se agreguen nuevas propiedades al objeto (Puede ser omitida si no queremos que esto ocurra)
+          if (!Object.keys(obj).includes(prop))
+            return console.error(`La propiedad "${prop}" no existe en el objeto "persona"`);
+
+          // Validación del nombre y apellido
+          if (
+            (prop === "nombre" || prop === "apellido") &&
+            !/^[A-Za-zÑñÁÉÍÓÚáéíóúÜü\s]+$/g.test(valor)
+          )
+            return console.error(
+              `La propiedad "${prop}" solo acepta letras y espacios en blancos.`
+            );
+
+          // Validación de la edad
+          if (prop === "edad" && (!/^[0-9]+$/.test(valor) || valor >= 100))
+            return console.error(
+              `La propiedad "${prop}" solo acepta números enteros positivos menores a 100.`
+            );
+          // Acá es donde creamos las propiedades si se superan todas las validaciones.
+          obj[prop] = valor;
+        },
+      };
+
+      // Creamos un objeto tipo proxy llamado alex basado en persona
+      const alex = new Proxy(persona, manejador);
+
+      // Modificamos o asignamos propiedades al proxy
+      alex.nombre = "Alex9";
+      alex.apellido = "Hernández";
+      alex.edad = 48;
+      // podemos crear nuevas propiedades en el objeto simpre y cuando las valicaciones en el manejador no los permintan.
+      alex.twitter = "@hernandezaw";
+
+      console.log(
+        "*-* Observe que cualquier cambio realizado en el Proxy se efectuara tambien en el objeto padre, puesto que estos estan vinculados aunque son objetos diferentes..."
+      );
+      console.log("Objeto alex :", alex);
+      console.log("Objeto persona :", persona);
+    </script>
+  </body>
+</html>
