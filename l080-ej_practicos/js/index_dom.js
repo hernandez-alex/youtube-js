@@ -23,7 +23,7 @@ const d = document;
 d.addEventListener("DOMContentLoaded", (e) => {
   hamburguerMenu(".panel-btn", ".panel", ".menu a");
   digitalClock("#reloj", "#activar-reloj", "#desactivar-reloj");
-  alarm("../assets/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
+  alarm("./assets/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
   countdown("countdown", "feb 12, 2023 19:57:55", "Feliz Cumpleaños 🤗️");
   scrollTopBotton(".scroll-top-btn");
   responsiveMedia(
