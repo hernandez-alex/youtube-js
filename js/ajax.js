@@ -71,3 +71,36 @@
       console.log("Esto se ejecutará independientemente del resultado de la promesa.");
     });
 })();
+
+// ****************************************************************************
+// AJAX: Api Fetch + Async Await
+// ****************************************************************************
+(() => {
+  const $fetchAsync = document.getElementById("fetch-async");
+  const $fragment = document.createDocumentFragment();
+
+  async function getData() {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/user");
+      const json = await res.json();
+
+      if (!res.ok) throw { status: res.status, statusText: res.statusText };
+
+      json.forEach((el) => {
+        const $li = document.createElement("li");
+        $li.innerHTML = `${el.name} -- ${el.email} -- ${el.phone}`;
+        $fragment.appendChild($li);
+      });
+
+      $fetchAsync.appendChild($fragment);
+    } catch (err) {
+      console.warn("Estoy en el Catch", err);
+      const message = err.statusText || "Ocurrió un error";
+      $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
+    } finally {
+      console.log("Esto se ejecutará independientemente del resultado try-cash");
+    }
+  }
+
+  getData();
+})();
