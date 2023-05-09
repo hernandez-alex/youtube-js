@@ -68,7 +68,9 @@
       $fetch.innerHTML = `Error ${err.status}: ${message}`;
     })
     .finally(() => {
-      console.log("Esto se ejecutará independientemente del resultado de la promesa.");
+      console.log(
+        "Esto se ejecutará independientemente del resultado de la promesa."
+      );
     });
 })();
 
@@ -81,7 +83,7 @@
 
   async function getData() {
     try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/user");
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
       const json = await res.json();
 
       if (!res.ok) throw { status: res.status, statusText: res.statusText };
@@ -98,9 +100,41 @@
       const message = err.statusText || "Ocurrió un error";
       $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
     } finally {
-      console.log("Esto se ejecutará independientemente del resultado try-cash");
+      console.log(
+        "Esto se ejecutará independientemente del resultado try-cash"
+      );
     }
   }
 
   getData();
+})();
+
+// ****************************************************************************
+// AJAX: Librería Axios
+// ****************************************************************************
+(() => {
+  const $axios = document.getElementById("axios");
+  const $fragment = document.createDocumentFragment();
+
+  axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((res) => {
+      // console.log(res);
+      let json = res.data;
+      json.forEach((el) => {
+        const $li = document.createElement("li");
+        $li.innerHTML = `${el.name} -- ${el.email} -- ${el.phone}`;
+        $fragment.appendChild($li);
+      });
+
+      $axios.appendChild($fragment);
+    })
+    .catch((err) => {
+      console.log("Estamos en el catch axios", err.response);
+      let message = err.response.statusText || "Ocurrió un error";
+      $axios.innerHTML = `Error ${err.response.status}: ${message}`;
+    })
+    .finally(() =>
+      console.log("Esto se ejecutará independientemente del resultado Axios")
+    );
 })();
