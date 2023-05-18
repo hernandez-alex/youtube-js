@@ -1,7 +1,7 @@
 const d = document;
 const $table = d.querySelector(".crud-table");
-const $form = d.querySelector("crud-form");
-const $title = d.querySelector("crud-title");
+const $form = d.querySelector(".crud-form");
+const $title = d.querySelector(".crud-title");
 const $template = d.getElementById("crud-template").content;
 
 const $fragment = d.createDocumentFragment();
@@ -49,8 +49,59 @@ const getAll = () => {
       console.log(err);
       $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);
     },
-    data: null,
   });
 };
 
 d.addEventListener("DOMContentLoaded", getAll);
+
+d.addEventListener("submit", (e) => {
+  if (e.target === $form) {
+    e.preventDefault();
+    if (!e.target.id.value) {
+      // Create - POST
+      ajax({
+        url: "http://localhost:5050/santos",
+        method: "POST",
+        success: (res) => location.reload(),
+        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+        data: {
+          nombre: e.target.nombre.value,
+          constelacion: e.target.constelacion.value,
+        },
+      });
+    } else {
+      // Update - PUT
+      ajax({
+        method: "PUT",
+        url: `http://localhost:5050/santos/${e.target.id.value}`,
+        success: (res) => location.reload(),
+        error: () => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+        data: {
+          nombre: e.target.nombre.value,
+          constelacion: e.target.constelacion.value,
+        },
+      });
+    }
+  }
+});
+
+d.addEventListener("click", (e) => {
+  if (e.target.matches(".edit")) {
+    $title.textContent = "Editar Santo";
+    $form.nombre.value = e.target.dataset.name;
+    $form.constelacion.value = e.target.dataset.constellation;
+    $form.id.value = e.target.dataset.id;
+  }
+  if (e.target.matches(".delete")) {
+    let isDelete = confirm(`¿Seguro de querer eliminar el Id ${e.target.dataset.id}?`);
+    if (isDelete) {
+      // Delete - DELETE
+      ajax({
+        method: "DELETE",
+        url: `http://localhost:5050/santos/${e.target.dataset.id}`,
+        success: (res) => location.reload(),
+        error: () => alert(err),
+      });
+    }
+  }
+});

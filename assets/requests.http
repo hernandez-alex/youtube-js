@@ -1,0 +1,29 @@
+### Variables
+@api = http://localhost:5050
+
+### Obteniendo todas las publicaciones
+GET {{api}}/santos
+
+### Obteniendo solo la primera publicación
+GET {{api}}/santos/6
+
+### Creando una nueva publicación
+POST {{api}}/santos
+Content-Type: application/json
+
+{
+  "nombre": "Alex",
+  "constelacion": "Piscis"
+}
+
+### Elinminando una publicación
+DELETE {{api}}/santos/10
+
+### Actualizando una publicación
+PUT {{api}}/santos/10
+Content-Type: application/json
+
+{
+  "nombre": "Alfredo",
+  "constelacion": "Sagitario"
+}
