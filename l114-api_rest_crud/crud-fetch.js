@@ -62,7 +62,7 @@ d.addEventListener("submit", async (e) => {
         $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
       }
     } else {
-      // Udate - PUT
+      // Update - PUT
       try {
         let options = {
           method: "PUT",
