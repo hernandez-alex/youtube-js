@@ -9,15 +9,16 @@ const $fragment = d.createDocumentFragment();
 const getAll = async () => {
   try {
     let res = await axios.get("http://localhost:5050/santos");
-    let json = await res.json();
+    let json = await res.data;
+    console.log(json);
 
     json.forEach((el) => {
       $template.querySelector(".name").textContent = el.nombre;
-      $template.querySelector(".constellation").textContent = el.constalacion;
+      $template.querySelector(".constellation").textContent = el.constelacion;
       $template.querySelector(".edit").dataset.id = el.id;
-      $template.querySelector(".edit").dataset.name = el.name;
+      $template.querySelector(".edit").dataset.name = el.nombre;
       $template.querySelector(".edit").dataset.constellation = el.constelacion;
-      $template.querySelector(".delete").daset.id = el.id;
+      $template.querySelector(".delete").dataset.id = el.id;
 
       let $clone = d.importNode($template, true);
       $fragment.appendChild($clone);
@@ -32,16 +33,83 @@ const getAll = async () => {
 
 d.addEventListener("DOMContentLoaded", getAll);
 
-// d.addEventListener("submit", async (e) => {
-//   if (e.target === $form) {
-//     e.preventDefault();
+d.addEventListener("submit", async (e) => {
+  if (e.target === $form) {
+    e.preventDefault();
 
-//     if (!e.target.id.value) {
-//       // Create POST
-//       try {
-//       } catch (err) {}
-//     } else {
-//       // Update - PUT
-//     }
-//   }
-// });
+    if (!e.target.id.value) {
+      // Create POST
+      try {
+        let options = {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=utf-8",
+          },
+          data: JSON.stringify({
+            nombre: e.target.nombre.value,
+            constelacion: e.target.constelacion.value,
+          }),
+        };
+        let res = await axios("http://localhost:5050/santos", options);
+        let json = await res.data;
+        location.reload(true);
+      } catch (err) {
+        let message = err.statusText || "Ocurrió un error";
+        $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+      }
+    } else {
+      // Update - PUT
+      try {
+        let options = {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=utf-8",
+          },
+          data: JSON.stringify({
+            nombre: e.target.nombre.value,
+            constelacion: e.target.constelacion.value,
+          }),
+        };
+        let res = await axios(`http://localhost:5050/santos/${e.target.id.value}`, options);
+        let json = await res.data;
+        location.reload(true);
+      } catch (err) {
+        let message = err.statusText || "Ocurrió un error";
+        $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+      }
+    }
+  }
+});
+
+d.addEventListener("click", async (e) => {
+  if (e.target.matches(".edit")) {
+    $title.textContent = "Editar Santo";
+    $form.nombre.value = e.target.dataset.name;
+    $form.constelacion.value = e.target.dataset.constellation;
+    $form.id.value = e.target.dataset.id;
+  }
+
+  if (e.target.matches(".delete")) {
+    let isDelete = confirm(`¿Estás seguro de eliminar el Id ${e.target.dataset.id}`);
+    if (isDelete) {
+      // Delete - DELETE
+      try {
+        let options = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+        };
+
+        let res = await axios(`http://localhost:5050/santos/${e.target.dataset.id}`, options);
+        // let json = await res.data;
+
+        if (!res.ok) throw { status: res.status, statusText: res.statusText };
+        location.reload(true);
+      } catch (err) {
+        let message = err.statusText || "Ocurrió un error";
+        $form.insertAdjacentHTML("afterend", `<p><b>Error ${err.status}: ${message}</b></p>`);
+      }
+    }
+  }
+});
