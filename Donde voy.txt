@@ -1,1 +1,1 @@
-Curso JavaScript: 34. Ejercicios de lógica de programación 1/10
+Curso JavaScript: 122. Ejercicios Ajax
